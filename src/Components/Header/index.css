@@ -1,0 +1,24 @@
+.navBar{
+    padding: 1em 0;
+    margin-bottom: 2em;
+}
+.Logo, .routes, .login{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Logo img{
+    width: 40px;
+}
+a{
+    padding: 0 0.5em;
+    color:#222;
+}
+.login a{
+    display: inline-block;
+    padding: 0.3em 0.7em;
+    border: 1px solid #222;
+    background-color: #800080;
+    color:#fff;
+    margin-left: 1em;
+}
