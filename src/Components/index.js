@@ -1,0 +1,6 @@
+export { default as Header} from "./Header"
+export { default as HomePage} from "../Pages/HomePage"
+export { default as CryptoCurrencyPage} from "../Pages/CryptoCurrencyPage"
+export { default as CryptoDetailsPage} from "../Pages/CryptoDetailsPage"
+export { default as NewsPage} from "../Pages/NewsPage"
+export { default as ExchangesPage} from "../Pages/ExchangesPage"

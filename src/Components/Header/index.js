@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../../icons/bitcoin-wallet.png"
+import logo from "../../icons/bitcoin.png"
 
 import { Link } from "react-router-dom"
 import "./index.css"
@@ -11,12 +11,14 @@ const Header = () => {
         <Conteiner>
           <div className='Logo'>
             <img src={logo} alt="logo" />
-            <h2>Universo Crypto</h2>
+            <Link to="/">
+              <h2>Universo Crypto</h2>
+            </Link>
           </div>
           <div className="routes">
-            <Link to="/Home">Exchanges</Link>
-            <Link to="/News">NFT`s</Link>
-            <Link to="/Exchanges">Crypto News</Link>
+            <Link to="/exchanges">Exchanges</Link>
+            <Link to="/NFT">NFT`s</Link>
+            <Link to="/News">Crypto News</Link>
           </div>
           <div className="login">
             <p>Procurar</p>

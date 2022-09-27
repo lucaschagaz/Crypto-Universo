@@ -1,9 +1,7 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 
-import Header from "./Components/Header"
-import HomePage from "./Pages/HomePage"
-// import ExchangesPage from "./Pages/ExchangesPage"
+import { Header, HomePage, ExchangesPage, CryptoCurrencyPage, CryptoDetailsPage, NewsPage } from "./Components"
 
 
 const App = () => {
@@ -12,9 +10,10 @@ const App = () => {
         <Header/>
         <Routes>
           <Route path="/" element={<HomePage/>} />
-          {/* <Route path="/exchanges" element={<ExchangesPage/>} /> */}
-          {/* <Route path="/news" element={} /> */}
-          {/* <Route path="/Crypto/:id" element={} /> */}
+          <Route path="/exchanges" element={<ExchangesPage/>} /> 
+          <Route path="/cryptoCurrency" element={<CryptoCurrencyPage/>} />
+          <Route path="/news" element={<NewsPage/>} />
+          <Route path="/CryptoDetails/:coinId" element={<CryptoDetailsPage/>} />
         </Routes>
     </Router>
   )

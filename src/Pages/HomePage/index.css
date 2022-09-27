@@ -14,7 +14,7 @@
     padding: 0.5em 0.7em;
     border: none;
     border-radius: 30px;
-    margin-right: 10px;
+    margin-right:15px;
     font-size: 16px;
 }
 .buttons button:hover{
@@ -35,7 +35,7 @@
     color: #222;
     width: 25px;
     height: 25px;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 .sliderConteiner{
     height: 160px;
@@ -46,4 +46,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.statistics h2{
+    padding:20px 0;
+    font-size:2em;
+    color:purple;
+}
+.statistics_items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width:80%;
 }
