@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
 
 import Conteiner from "../../Components/Conteiner";
-import Card from "../../Components/Card"
+import Card from "../../Components/Card";
+import CryptoCurrencyPage from "../../Pages/CryptoCurrencyPage";
 
 import { cryptoApi } from "../../services/cryptoApi";
 
@@ -50,6 +51,10 @@ const HomePage = () => {
               <Card title="Total 24h volume" value={millify(globalStats.total24hVolume)}></Card>
               <Card title="Total Markets" value={millify(globalStats.totalMarkets)}></Card>
             </div>
+        </Conteiner>
+        <Conteiner CustomClass="Currencies-Home-Conteiner">
+          <h2>10 TOP must Popular CryptoCurrencies</h2>
+          <CryptoCurrencyPage limit/>
         </Conteiner>
       </Conteiner>
     </div>

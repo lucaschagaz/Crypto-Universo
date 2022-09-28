@@ -17,7 +17,7 @@ const Header = () => {
           </div>
           <div className="routes">
             <Link to="/exchanges">Exchanges</Link>
-            <Link to="/NFT">NFT`s</Link>
+            <Link to="/Cryptocurrencies">Cryptocurrencies</Link>
             <Link to="/News">Crypto News</Link>
           </div>
           <div className="login">
