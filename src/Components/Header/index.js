@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../../icons/bitcoin.png"
+import logo from "../../icons/icon2.png"
 
 import { Link } from "react-router-dom"
 import "./index.css"
@@ -21,7 +21,6 @@ const Header = () => {
             <Link to="/News">Crypto News</Link>
           </div>
           <div className="login">
-            <p>Procurar</p>
             <Link to="/">Login</Link>
           </div>
         </Conteiner>

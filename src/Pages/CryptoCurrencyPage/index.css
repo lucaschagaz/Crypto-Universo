@@ -1,5 +1,22 @@
+h1{
+    margin:30px 0;
+}
 .coins-conteiner{
     width:100%;
     display:flex;
+    align-items:center;
     flex-wrap:wrap;
+    justify-content:center;
+
+}
+.Currencies-Conteiner{
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+}
+.Currencies-Conteiner h2{
+    margin:30px 0 10px 0;
+}
+.Currencies-Conteiner p{
+    margin-bottom:30px;
 }

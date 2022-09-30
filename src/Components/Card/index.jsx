@@ -2,10 +2,13 @@ import React from 'react';
 
 import "./index.css";
 
-const Card = ({title, value}) => {
+const Card = ({title, value, icon}) => {
   return (
     <div className="Card">
-        <p> {title}</p>
+        <div>
+          <span>{icon}</span> 
+          <p>{title}</p>
+        </div>
         <p>{value}</p>
     </div>
   )

@@ -1,0 +1,11 @@
+.button{
+    background: rgba(223, 223, 224, 0) linear-gradient(135deg, rgb(112, 50, 112) 0%, rgb(113, 36, 175) 100%) repeat scroll 0% 0%;
+    padding:20px;
+    height:30px;
+    display:flex;
+    align-items:center;
+}
+.button a{
+    color:#fff;
+    font-weight: 500;
+}

@@ -1,50 +1,54 @@
-import React from 'react'
-import millify from "millify"
+import React from "react";
+import millify from "millify";
 
-import { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-import CardCoin from '../../Components/CardCoin'
-import Conteiner from "../../Components/Conteiner" 
+import CardCoin from "../../Components/CardCoin";
+// import Conteiner from "../../Components/Conteiner"
 
-import { useGetCryptosQuery } from "../../services/cryptoApi"
+import { useGetCryptosQuery } from "../../services/cryptoApi";
 
-import "./index.css"
+import "./index.css";
 
-const CryptoCurrencyPage = ({limit}) => { 
-
-  const count = limit ? 10 : 100;
-  
+const CryptoCurrencyPage = ({ simplified }) => {
+  const count = simplified ? 10 : 100;
   const { data, isFetching } = useGetCryptosQuery(count);
-
   const cryptos = data?.data?.coins;
 
-  console.log(cryptos)
+  console.log(cryptos);
 
-  if(isFetching) return "Loading..."
+  if (isFetching) return "Loading...";
 
   return (
     <>
-      <Conteiner CustomClass="Currencies-Conteiner">
-        <div>
-          <h2>Observação de Mercado da CryptoVerse</h2>
-          <p>Encontre moedas promissoras e grandes oportunidades!</p>
+      <div className="Currencies-Conteiner">
+        <h2>Observação de Mercado da Crypto Universe</h2>
+        <p>Encontre moedas promissoras e grandes oportunidades!</p>
+        {!simplified && 
+        <div className="search">
+          <p>Pesquisar</p>
         </div>
-        <div className="coins-conteiner">
-          {cryptos.map((currency)=>(
-            <CardCoin 
+        }
+      </div>
+      <div className="coins-conteiner">
+        {cryptos.map((currency) => (
+          <Link to={`/coin/${currency.uuid}`}>
+            <CardCoin
               name={currency.name}
-              price={millify(currency.price)} 
-              rank={currency.rank} 
-              iconUrl={currency.iconUrl} 
+              price={millify(currency.price, {
+                precision: 3,
+                decimalSeparator: ",",
+              })}
+              rank={currency.rank}
+              iconUrl={currency.iconUrl}
               marketCap={millify(currency.marketCap)}
               change={currency.change}
             ></CardCoin>
-          ))}
-        </div>
-      </Conteiner>
+          </Link>
+        ))}
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default CryptoCurrencyPage;

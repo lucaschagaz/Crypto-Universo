@@ -12,7 +12,7 @@
 }
 
 .Image{
-    background-image: url("../../icons/image2.jpg");
+    background-image: url("../../icons/test1.jpg");
     background-repeat: no-repeat;
     background-size:cover;
     width: 80vw;
@@ -26,12 +26,13 @@
 }
 .statistics{
     flex-direction:column;
-    margin:30px 0;
+    margin:30px 0 60px 0;
     align-items: center;
     justify-content: center;
 }
 
-.Currencies-Home-Conteiner,
-.Currencies-Conteiner{
+.Home-Conteiner{
     flex-direction:column;    
+    align-items:center;
 }
+

@@ -6,4 +6,4 @@ const CryptoDetailsPage = () => {
   )
 }
 
-export default CryptoDetailsPage
+export default CryptoDetailsPage;

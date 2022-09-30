@@ -1,9 +1,11 @@
 import React from 'react'
 
-const NewsPage = () => {
+const NewsPage = ({ limit }) => {
   return (
-    <div>NewsPage</div>
+    <div>
+      
+    </div>
   )
 }
 
-export default NewsPage
+export default NewsPage;
