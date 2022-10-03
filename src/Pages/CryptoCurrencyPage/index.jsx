@@ -4,6 +4,7 @@ import millify from "millify";
 import { Link } from "react-router-dom";
 
 import CardCoin from "../../Components/CardCoin";
+import Search from "../../Components/Search"
 // import Conteiner from "../../Components/Conteiner"
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
@@ -25,9 +26,7 @@ const CryptoCurrencyPage = ({ simplified }) => {
         <h2>Observação de Mercado da Crypto Universe</h2>
         <p>Encontre moedas promissoras e grandes oportunidades!</p>
         {!simplified && 
-        <div className="search">
-          <p>Pesquisar</p>
-        </div>
+          <Search/>
         }
       </div>
       <div className="coins-conteiner">
