@@ -1,20 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import millify from "millify";
 
 import { Link } from "react-router-dom";
 
 import CardCoin from "../../Components/CardCoin";
 import Search from "../../Components/Search"
-// import Conteiner from "../../Components/Conteiner"
+
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 
 import "./index.css";
 
-const CryptoCurrencyPage = ({ simplified }) => {
-  const count = simplified ? 10 : 100;
-  const { data, isFetching } = useGetCryptosQuery(count);
-  const cryptos = data?.data?.coins;
+const CryptoCurrencyPage = ({ limit }) => {
+  const count = limit ? 10 : 100;
+  const { data, isFetching, isLoading } = useGetCryptosQuery(count);
+  const [cryptos, setCryptos] = useState();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(()=>{   
+
+    if(!isFetching){
+      setCryptos(data?.data?.coins)
+    }
+
+    const filteredData = data?.data?.coins.filter((item) => item.name.toLowerCase().includes(searchTerm))
+    
+    if(!isFetching){
+      setCryptos(filteredData)
+    }
+    
+
+  },[data, searchTerm])
+
 
   console.log(cryptos);
 
@@ -24,14 +41,15 @@ const CryptoCurrencyPage = ({ simplified }) => {
     <>
       <div className="Currencies-Conteiner">
         <h2>Observação de Mercado da Crypto Universe</h2>
-        <p>Encontre moedas promissoras e grandes oportunidades!</p>
-        {!simplified && 
-          <Search/>
+        {!limit && 
+          <Search value={searchTerm} handleOnText={(e) =>
+            setSearchTerm(e.target.value)} 
+          />
         }
       </div>
       <div className="coins-conteiner">
-        {cryptos.map((currency) => (
-          <Link to={`/coin/${currency.uuid}`}>
+        {cryptos?.map((currency) => (
+          <Link key={currency.uuid} to={`/coin/${currency.uuid}`}>
             <CardCoin
               name={currency.name}
               price={millify(currency.price, {

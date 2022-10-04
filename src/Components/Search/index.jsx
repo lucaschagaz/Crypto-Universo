@@ -1,27 +1,24 @@
 import React, { useState } from 'react'
 
+import styles from "./search.module.css"
 
-const Search = () => {
-
-    const [text, setText] = useState("")
+const Search = ({handleOnText, value}) => {
 
     const submit = (e) =>{
         e.preventDefault()
-        alert(text)
-        setText("")
     }
 
     return (
-    <div>
-        <form className="search">
+    <div className={styles.search_Counteiner}>
+        <form className={styles.search} onSubmit={submit}>
           <input 
                 type="text"
                 name="search" 
-                value={text} 
-                onChange={(e) => setText( e.target.value)} 
+                value={value} 
+                onChange={handleOnText} 
                 placeholder="Pesquisar"
             />
-          <button type='submit' onSubmit={submit}>Pesquisar</button>  
+          <button>Pesquisar</button>  
         </form>
     </div>
     )

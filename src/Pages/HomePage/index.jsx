@@ -6,17 +6,17 @@ import { FaAngleRight, FaStackExchange, FaStoreAlt } from "react-icons/fa";
 import { FcCurrencyExchange, FcStatistics, FcClock } from "react-icons/fc";
 
 import Conteiner from "../../Components/Conteiner";
-import Card from "../../Components/Card";
+import Card from "../../Components/StatistcsCard";
 import Button from "../../Components/Button";
 import CryptoCurrencyPage from "../../Pages/CryptoCurrencyPage";
 import NewsPage from "../../Pages/NewsPage";
 
-import { cryptoApi } from "../../services/cryptoApi";
+import { useGetCryptosQuery } from "../../services/cryptoApi";
 
 import "./index.css";
 
 const HomePage = () => {
-  const { data, isFetching } = cryptoApi.useGetCryptosQuery();
+  const { data, isFetching } = useGetCryptosQuery();
   const globalStats = data?.data?.stats;
 
   console.log(data);
@@ -77,12 +77,12 @@ const HomePage = () => {
           <h1>TOP 10 Crypto Moedas mais pupulares</h1>
           <Button text="Ver Mais" link="/Cryptocurrencies" />
         </div>
-        <CryptoCurrencyPage simplified />
+        <CryptoCurrencyPage limit />
         <div className="header_sections">
           <h1>Noticias mais relevantes do mundo crypto</h1>
           <Button text="Ver Mais" link="/news"/>
         </div>
-        <NewsPage />
+        <NewsPage limit/>
       </Conteiner>
     </>
   );
