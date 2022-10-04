@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery  } from  "@reduxjs/toolkit/query/react"
 
-const baseUrl = 'https://bing-news-search1.p.rapidapi.com/news/search';
+const baseUrl = 'https://bing-news-search1.p.rapidapi.com/news';
 
 const CurrenciesNewsHeaders = {
     'X-BingApis-SDK': 'true',
@@ -15,11 +15,13 @@ export const NewsApi = createApi({
         getNews:builder.query({
             query:(count)=>{
                 return{
-                    url:"/",
+                    url:'/search',
                     headers: CurrenciesNewsHeaders,
-                    params: {q: 'bitcoin', safeSearch: 'Off', textFormat: 'Raw', freshness: 'Day', limit:count}         
+                    params: {q:'bitcoin', safeSearch: 'Off', textFormat: 'Raw', freshness: 'Day', limit:count}         
                 }
             }
         })
     })
 })
+
+export const { useGetNewsQuery } = NewsApi;
