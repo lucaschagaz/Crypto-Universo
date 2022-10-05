@@ -82,7 +82,7 @@ const HomePage = () => {
           <h1>Noticias mais relevantes do mundo crypto</h1>
           <Button text="Ver Mais" link="/news"/>
         </div>
-        <NewsPage limit/>
+        <NewsPage simplifeid/>
       </Conteiner>
     </>
   );

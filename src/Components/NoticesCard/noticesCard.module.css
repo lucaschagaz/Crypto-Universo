@@ -1,0 +1,10 @@
+.NoticesCard{
+    margin: 20px auto;
+    min-height: 200px;
+    width:1200px ;
+    background-color: rgb(165, 62, 165);
+    color:#fff;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #222;
+}
