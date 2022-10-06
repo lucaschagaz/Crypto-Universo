@@ -1,0 +1,15 @@
+.loader_Conteiner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader{
+    width: 50px;
+}
+.loader_Conteiner p{
+    color:purple;
+    padding:10px;
+    font-size:1.5em;
+}

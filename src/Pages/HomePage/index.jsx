@@ -10,18 +10,19 @@ import Card from "../../Components/StatistcsCard";
 import Button from "../../Components/Button";
 import CryptoCurrencyPage from "../../Pages/CryptoCurrencyPage";
 import NewsPage from "../../Pages/NewsPage";
+import Loading from "../../Components/Loader"
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 
 import "./index.css";
 
 const HomePage = () => {
-  const { data, isFetching } = useGetCryptosQuery();
+  const { data, isFetching, isLoading } = useGetCryptosQuery();
   const globalStats = data?.data?.stats;
 
   console.log(data);
 
-  if (isFetching) return "Loading...";
+  if (isLoading || isFetching ) return <Loading/>;
 
   return (
     <>
@@ -74,12 +75,12 @@ const HomePage = () => {
           </div>
         </Conteiner>
         <div className="header_sections">
-          <h1>TOP 10 Crypto Moedas mais pupulares</h1>
+          <h1>TOP 10 Cripto Moedas mais pupulares</h1>
           <Button text="Ver Mais" link="/Cryptocurrencies" />
         </div>
         <CryptoCurrencyPage limit />
         <div className="header_sections">
-          <h1>Noticias mais relevantes do mundo crypto</h1>
+          <h1>Noticias mais relevantes do mundo cripto</h1>
           <Button text="Ver Mais" link="/news"/>
         </div>
         <NewsPage simplifeid/>

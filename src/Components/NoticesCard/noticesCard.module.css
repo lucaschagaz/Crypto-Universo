@@ -1,10 +1,26 @@
 .NoticesCard{
-    margin: 20px auto;
-    min-height: 200px;
-    width:1200px ;
-    background-color: rgb(165, 62, 165);
+    margin: 20px 0;
+    background-color:rgb(113, 36, 175);
     color:#fff;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #222;
+    padding: 20px;
+    width:400px;
+    height:300px;
+}
+.NoticesTitle{
+    display:flex;
+    margin:20px 0;
+}
+.NoticesTitle img{
+    width: 150px;
+    height:100px;    
+}
+.NoticesRodapé{
+    margin:20px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.NoticesRodapé img{
+    width:50px;
+    height:50px; 
 }

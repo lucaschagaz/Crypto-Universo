@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import Search from "../../Components/Search";
 import NoticesCard from "../../Components/NoticesCard";
+import Loading from "../../Components/Loader"
 
 import { useGetNewsQuery } from "../../services/newsApi";
 
@@ -12,7 +13,7 @@ import styles from "./news.module.css";
 const NewsPage = ({ simplifeid }) => {
   const [searchTerm, setSearchTerm] = useState("bitcoin");
   const count = simplifeid ? 6 : 100;
-  const { data: cryptoNews, isFetching } = useGetNewsQuery({ searchTerm, count });
+  const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ searchTerm, count });
   const [news, setNews] = useState();
 
   console.log(cryptoNews?.value);
@@ -26,7 +27,8 @@ const NewsPage = ({ simplifeid }) => {
    
   }, []);
 
-  if (!cryptoNews?.value) return "Loading...";
+  // if (!cryptoNews?.value) return <Loading/> ;
+  if (isLoading || isFetching ) return <Loading/>;
 
   return (
     <>
@@ -41,7 +43,7 @@ const NewsPage = ({ simplifeid }) => {
       </div>
       <div className={styles.news_Conteiner}>
         {cryptoNews?.value.map((news, i) => (
-          <Link to={`${news.url}`} key={i}>
+            <a href={news.url} key={i} target="_blank" rel="noreferrer">
             <NoticesCard
               name={news.name}
               image={news?.image?.thumbnail?.contentUrl}
@@ -54,7 +56,7 @@ const NewsPage = ({ simplifeid }) => {
               imageProvider={news.provider[0]?.image?.thumbnail?.contentUrl}
               date={moment(news.datePublished).startOf("ss").fromNow()}
             ></NoticesCard>
-          </Link>
+          </a>
         ))}
       </div>
     </>

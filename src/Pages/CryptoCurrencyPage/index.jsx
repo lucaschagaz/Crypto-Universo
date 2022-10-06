@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import CardCoin from "../../Components/CardCoin";
 import Search from "../../Components/Search"
+import Loading from "../../Components/Loader"
 
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
@@ -35,7 +36,7 @@ const CryptoCurrencyPage = ({ limit }) => {
 
   console.log(cryptos);
 
-  if (isFetching) return "Loading...";
+  if (isLoading || isFetching ) return <Loading/>;
 
   return (
     <>

@@ -2,20 +2,25 @@ import React from 'react'
 
 import styles from "./noticesCard.module.css"
 
+import defaultIcon from "../../icons/iconDefault01.png";
+import defaultImage from "../../icons/defaultImage.png";
+
 const NoticesCard = ({name, url, image, description, imageProvider, textProvider, date}) => {
     return (
       <div className={styles.NoticesCard}>
-          <div>
-            <img src={image} alt={name}></img > 
-            <p>{name}</p>
+          <div className={styles.NoticesTitle}>
+            <h4>{name}</h4>
+            <img src={image || defaultImage} alt={name} ></img > 
           </div>
-          <p>{description}</p>
-          <p>{url}</p>
           <div>
-            {/* <img src={imageProvider} alt={textProvider} /> */}
-            <p >{textProvider}</p>
+            <p>{description}</p>
+            <p>{url}</p>
+            <div className={styles.NoticesRodapé}>
+              <img src={imageProvider || defaultIcon} alt={textProvider}/>
+              <p >{textProvider}</p>
+                <p>{date}</p>
+            </div>
           </div>
-          <p>{date}</p>
       </div>
     )
   }
