@@ -13,11 +13,11 @@ export const NewsApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl}),
     endpoints:(builder)=>({
         getNews:builder.query({
-            query:({searchTerm, count})=>{
+            query:({ count})=>{
                 return{
                     url:'/search',
                     headers: CurrenciesNewsHeaders,
-                    params: {q:searchTerm, safeSearch: 'Off', textFormat: 'Raw', freshness: 'Day', count:count}         
+                    params: {q:"Cryptocurrency", safeSearch: 'Off', textFormat: 'Raw', freshness: 'Day', count:count}         
                 }
             }
         })
