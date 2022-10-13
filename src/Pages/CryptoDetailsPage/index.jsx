@@ -11,26 +11,26 @@ import Loading from "../../Components/Loader"
 
 import { useGetCryptosDetailsQuery } from "../../services/cryptoApi";
 
+import styles from "./cryptoDetails.module.css"
+
 const CryptoDetailsPage = () => {
   
   const{ coinId } = useParams()
   const { data, isFetching, isLoading } = useGetCryptosDetailsQuery(coinId)
   const [ timePeriod, setTimePeriod ] = useState("7d")
-
   const cryptoDetails = data?.data?.coin;
 
   console.log(data)
-  console.log(cryptoDetails)
 
   if (isLoading || isFetching ) return <Loading/>;
 
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
-
+  const volume = "24hVolume";
   
   const stats = [
     { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
     { title: 'Rank', value: cryptoDetails?.rank, icon: <NumberOutlined /> },
-    { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`, icon: <ThunderboltOutlined /> },
+    // { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`, icon: <ThunderboltOutlined /> },
     { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
     { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
   ];
@@ -45,30 +45,54 @@ const CryptoDetailsPage = () => {
 
 
   return (
-    <Conteiner>
-      <div className="coin-heading-container">
-        <h2>
+    <Conteiner CustomClass="cryptoDetails_conteiner">
+      <div className={styles.coin_heading_container}>
+        <h1>
           {data?.data?.coin.name} ({data?.data?.coin.symbol}) Price
-        </h2>
+        </h1>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </div>
-      <select defaultValue="7d" classname="coin-select" onchange={(value)=> setTimePeriod(value)} placeholder="Selecione o periodo">
-        {time.map((value)=> <option key={value}>{value}</option>)}
-      </select>
-      <Conteiner>
-        <div>
+      <div className={styles.coin_select}>
+        <select defaultValue="7d" classname="coin-select" onchange={(value)=> setTimePeriod(value)} placeholder="Selecione o periodo">
+          {time.map((value)=> <option key={value}>{value}</option>)}
+        </select>
+      </div>
+      <div className={styles.Stats_Conteiner}>
+        <div className={styles.card_Details_Stats}>
           <div>
             <h3>{cryptoDetails.name} Value Statistics</h3>
-            <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
+            <p>An overview showing the statistics of {cryptoDetails.name}.</p>
+          </div>
+          <div className={styles.card_Stats}>
+            {stats.map(({title, icon, value})=>(
+              <div className={styles.coin_stats}>
+                <div className={styles.coin_stats_heading}>
+                  <p>{icon}</p>
+                  <p>{title}</p>
+                </div>
+                <p>{value}</p>
+              </div>
+            ))}
           </div>
         </div>
-        <div>
+        <div className={styles.card_Details_Stats}>
           <div>
             <h3>Other Stats Info</h3>
-            <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
+            <p>An overview showing the statistics the stats of all cryptocurrencies.</p>
+          </div>
+          <div className={styles.card_Stats}>
+          {genericStats.map(({title, icon, value})=>(
+              <div className={styles.coin_stats}>
+                <div className={styles.coin_stats_heading}>
+                  <p>{icon}</p>
+                  <p>{title}</p>
+                </div>
+                <p>{value}</p>
+              </div>
+            ))}    
           </div>
         </div>
-      </Conteiner>
+      </div>
     </Conteiner>
   )
 }

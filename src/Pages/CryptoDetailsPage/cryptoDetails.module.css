@@ -1,0 +1,46 @@
+.coin_heading_container{
+    margin:0 auto 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.coin_heading_container h1{
+    color:purple;
+}
+.coin_select{
+    width: 15%;
+}
+.coin_select select{
+    width: 100%;    
+    border: none;
+    padding: 5px 10px;
+    color: purple;
+    font-size: large;
+    font-weight: 600;
+    margin-bottom: 30px;
+}   
+.Stats_Conteiner{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+.card_Stats{
+    margin: 20px 0;    
+}
+.coin_stats{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: purple;
+    color: #fff;
+    max-width: 400px;
+    margin: 10px 0 ;
+    padding: 20px;    
+
+}
+
+.coin_stats_heading{
+    display: flex;
+    width: auto;
+}
