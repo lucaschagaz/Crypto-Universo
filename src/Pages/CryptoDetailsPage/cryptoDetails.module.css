@@ -24,23 +24,64 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .card_Stats{
     margin: 20px 0;    
+}
+.card_Details_Stats{
+    margin: 0 auto;
 }
 .coin_stats{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     background-color: purple;
     color: #fff;
     max-width: 400px;
     margin: 10px 0 ;
     padding: 20px;    
-
 }
-
 .coin_stats_heading{
     display: flex;
     width: auto;
+}
+.coin_stats_heading svg{
+    margin-right:10px;
+}
+.coin_desc{
+    margin: 0 1em;
+}
+.coin_desc h3{
+    margin: 0 1em;
+    color:purple;
+}
+.coin_desc p{
+    margin: 20px 1em;
+}
+.link_name{
+    font-size: 2em;
+}
+.coin_desc_link{
+    background-color: purple;
+    color:#fff;
+    margin: 2em auto;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.coin_link{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+.coin_link h4{
+}
+.coin_link a{
+    color:#f1f1f1;
+    cursor:pointer;
+}
+.coin_link a:hover{
+    text-decoration: underline;
 }

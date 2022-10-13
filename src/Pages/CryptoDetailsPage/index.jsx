@@ -39,7 +39,7 @@ const CryptoDetailsPage = () => {
     { title: 'Number Of Markets', value: cryptoDetails?.numberOfMarkets, icon: <FundOutlined /> },
     { title: 'Number Of Exchanges', value: cryptoDetails?.numberOfExchanges, icon: <MoneyCollectOutlined /> },
     { title: 'Aprroved Supply', value: cryptoDetails?.supply?.confirmed ? <CheckOutlined /> : <StopOutlined />, icon: <ExclamationCircleOutlined /> },
-    { title: 'Total Supply', value: `$ ${cryptoDetails?.supply?.total && millify(cryptoDetails?.supply?.total)}`, icon: <ExclamationCircleOutlined /> },
+    { title: 'Total Supply', value: `$ ${cryptoDetails?.supply?.total == null ? "valor indisponivel" : cryptoDetails?.supply?.total && millify(cryptoDetails?.supply?.total)}`, icon: <ExclamationCircleOutlined /> },
     { title: 'Circulating Supply', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
   ];
 
@@ -77,11 +77,11 @@ const CryptoDetailsPage = () => {
         </div>
         <div className={styles.card_Details_Stats}>
           <div>
-            <h3>Other Stats Info</h3>
-            <p>An overview showing the statistics the stats of all cryptocurrencies.</p>
+            <h3>{cryptoDetails.name} Value Statistics</h3>
+            <p>An overview showing the statistics of {cryptoDetails.name}.</p>
           </div>
           <div className={styles.card_Stats}>
-          {genericStats.map(({title, icon, value})=>(
+            {genericStats.map(({title, icon, value})=>(
               <div className={styles.coin_stats}>
                 <div className={styles.coin_stats_heading}>
                   <p>{icon}</p>
@@ -89,8 +89,24 @@ const CryptoDetailsPage = () => {
                 </div>
                 <p>{value}</p>
               </div>
-            ))}    
+            ))}
           </div>
+        </div>
+        
+      </div>
+      <div className={styles.coin_desc}>
+        <div>
+          <h3> what is {cryptoDetails.name}</h3>
+          {HTMLReactParser(cryptoDetails.description)}
+        </div>
+        <h3 className={styles.link_name}>{cryptoDetails.name} Links</h3>
+        <div className={styles.coin_desc_link}>
+          {cryptoDetails.links.map((link)=>(
+            <div className={styles.coin_link} key={link.name}>
+              <h4>{link.type}</h4>
+              <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
+          </div>
+          ))}
         </div>
       </div>
     </Conteiner>
