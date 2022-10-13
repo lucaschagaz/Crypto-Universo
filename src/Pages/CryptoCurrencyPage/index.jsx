@@ -20,9 +20,9 @@ const CryptoCurrencyPage = ({ limit }) => {
 
   useEffect(()=>{   
 
-    if(!isFetching){
-      setCryptos(data?.data?.coins)
-    }
+    // if(!isFetching){
+    //   setCryptos(data?.data?.coins)
+    // }
 
     const filteredData = data?.data?.coins.filter((item) => item.name.toLowerCase().includes(searchTerm))
     
@@ -50,7 +50,7 @@ const CryptoCurrencyPage = ({ limit }) => {
       </div>
       <div className="coins-conteiner">
         {cryptos?.map((currency) => (
-          <Link key={currency.uuid} to={`/coin/${currency.uuid}`}>
+          <Link key={currency.uuid} to={`/CryptoDetails/${currency.uuid}`}>
             <CardCoin
               name={currency.name}
               price={millify(currency.price, {
