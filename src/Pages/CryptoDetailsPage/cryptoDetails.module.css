@@ -76,12 +76,10 @@
     justify-content: space-between;
     margin: 20px 0;
 }
-.coin_link h4{
+.coin_link:hover{
+    opacity: 0.5;
 }
 .coin_link a{
     color:#f1f1f1;
     cursor:pointer;
-}
-.coin_link a:hover{
-    text-decoration: underline;
 }

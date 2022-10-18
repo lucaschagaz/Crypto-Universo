@@ -2,15 +2,15 @@ import React from 'react'
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons"
 
 
-import "./index.css"
+import styles from "./Card.module.css"
 
 const CardCoin = ({name, price, rank, iconUrl, marketCap, change}) => {
 
   const c = change;
 
   return (
-    <div className="Cardcoin">
-        <div className="card-cabecalho">
+    <div className={styles.Cardcoin}>
+        <div className={styles.card_cabecalho}>
           <span><img alt="icon" src={iconUrl}/></span>
           <p>
             <span>{rank}.</span>
@@ -20,7 +20,7 @@ const CardCoin = ({name, price, rank, iconUrl, marketCap, change}) => {
         <p>Preço: <span> {price}</span></p>
         <p>Market Cap:<span> {marketCap}</span></p>
         <p>Mudança:
-          <span className={Number(c) > 0 ? "Maior" : "Menor" }>
+          <span className={Number(c) > 0 ? `${styles.Maior}` : `${styles.Menor}`}>
             {change}%
             {Number(c) > 0 ? <ArrowUpOutlined/> : <ArrowDownOutlined/>
 

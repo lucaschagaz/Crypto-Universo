@@ -12,7 +12,7 @@ import styles from "./news.module.css";
 
 const NewsPage = ({ simplifeid }) => {
   // const [searchTerm, setSearchTerm] = useState("bitcoin");
-  const count = simplifeid ? 6 : 100;
+  const count = simplifeid ? 3 : 100;
   const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ count });
   const [news, setNews] = useState();
 
@@ -31,13 +31,13 @@ const NewsPage = ({ simplifeid }) => {
   return (
     <>
       <div className={styles.newsTitle_Conteiner}>
-        <h1>Notícias</h1>
-        {/* {!simplifeid && (
-          <Search
-            value={searchTerm}
-            handleOnText={(e) => setSearchTerm(e.target.value)}
-          />
-        )} */}
+        {!simplifeid && (
+          // <Search
+          //   value={searchTerm}
+          //   handleOnText={(e) => setSearchTerm(e.target.value)}
+          // />
+          <h1>Notícias</h1>
+        )}
       </div>
       <div className={styles.news_Conteiner}>
         {cryptoNews?.value.map((news, i) => (

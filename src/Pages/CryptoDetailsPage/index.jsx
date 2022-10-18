@@ -7,25 +7,25 @@ import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCi
 
 import Conteiner from "../../Components/Conteiner"
 import Loading from "../../Components/Loader"
+import LineChart from "../../Components/LineChart"
 
-
-import { useGetCryptosDetailsQuery } from "../../services/cryptoApi";
+import { useGetCryptosDetailsQuery, useGetCryptosHistoryQuery} from "../../services/cryptoApi";
 
 import styles from "./cryptoDetails.module.css"
 
 const CryptoDetailsPage = () => {
   
   const{ coinId } = useParams()
+  const [ timePeriod, setTimePeriod ] = useState("3h")
   const { data, isFetching, isLoading } = useGetCryptosDetailsQuery(coinId)
-  const [ timePeriod, setTimePeriod ] = useState("7d")
+  const { data:coinHistory } = useGetCryptosHistoryQuery({ coinId, timePeriod})
   const cryptoDetails = data?.data?.coin;
 
   console.log(data)
-
+  console.log(timePeriod)
   if (isLoading || isFetching ) return <Loading/>;
 
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
-  const volume = "24hVolume";
   
   const stats = [
     { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
@@ -57,6 +57,7 @@ const CryptoDetailsPage = () => {
           {time.map((value)=> <option key={value}>{value}</option>)}
         </select>
       </div>
+      <LineChart coinHistory={ coinHistory} currentPrice={cryptoDetails.price} coinName={cryptoDetails.name}/>
       <div className={styles.Stats_Conteiner}>
         <div className={styles.card_Details_Stats}>
           <div>

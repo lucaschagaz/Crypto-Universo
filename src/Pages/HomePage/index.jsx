@@ -10,6 +10,7 @@ import Card from "../../Components/StatistcsCard";
 import Button from "../../Components/Button";
 import CryptoCurrencyPage from "../../Pages/CryptoCurrencyPage";
 import NewsPage from "../../Pages/NewsPage";
+import ExchangesPage from "../../Pages/ExchangesPage";
 import Loading from "../../Components/Loader"
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
@@ -84,6 +85,11 @@ const HomePage = () => {
           <Button text="Ver Mais" link="/news"/>
         </div>
         <NewsPage simplifeid/>
+        <div className="header_sections">
+          <h1>6 Exchanges mais valiosas</h1>
+          <Button text="Ver Mais" link="/news"/>
+        </div>
+        <ExchangesPage limit/>
       </Conteiner>
     </>
   );
