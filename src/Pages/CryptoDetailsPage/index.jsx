@@ -16,16 +16,21 @@ import styles from "./cryptoDetails.module.css"
 const CryptoDetailsPage = () => {
   
   const{ coinId } = useParams()
-  const [ timePeriod, setTimePeriod ] = useState("3h")
+  const [ timePeriod, setTimeperiod ] = useState('3h')
   const { data, isFetching, isLoading } = useGetCryptosDetailsQuery(coinId)
   const { data:coinHistory } = useGetCryptosHistoryQuery({ coinId, timePeriod})
   const cryptoDetails = data?.data?.coin;
 
-  console.log(data)
-  console.log(timePeriod)
+  useEffect(()=>{
+
+    console.log(timePeriod)
+  },[timePeriod])
+
+  console.log(coinHistory?.data?.history.timestamp)
+
   if (isLoading || isFetching ) return <Loading/>;
 
-  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+  const time = ['3h', '24h', '7d', '30d', '3m','1y', '3y', '5y'];
   
   const stats = [
     { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
@@ -53,7 +58,7 @@ const CryptoDetailsPage = () => {
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </div>
       <div className={styles.coin_select}>
-        <select defaultValue="7d" classname="coin-select" onchange={(value)=> setTimePeriod(value)} placeholder="Selecione o periodo">
+        <select classname="coin-select" onChange={(value) =>(setTimeperiod(value))}  placeholder="Selecione o periodo">
           {time.map((value)=> <option key={value}>{value}</option>)}
         </select>
       </div>

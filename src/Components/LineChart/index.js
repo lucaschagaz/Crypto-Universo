@@ -20,18 +20,16 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
   const coinTimestamp = [];
 
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
-    coinPrice.push(coinHistory?.data?.history[i].price * (Math.random() * 20));
+    coinPrice.push(coinHistory?.data?.history[i].price);
   }
 
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
-    coinTimestamp.push(
-      new Date(coinHistory?.data?.history[i].timestamp).toLocaleDateString()
-    );
+    coinTimestamp.push(new Date(coinHistory?.data?.history[i].timestamp *1000).toLocaleDateString());
   }
 
-  console.log("coinHistory",coinHistory);
+  // console.log("coinHistory",coinHistory);
   console.log("timeStamp",coinTimestamp);
-  console.log("coin Price",coinPrice);
+  // console.log("coin Price",coinPrice);
 
   ChartJS.register(
     CategoryScale,
@@ -50,8 +48,8 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         label: "Price In USD",
         data: coinPrice,
         fill: false,
-        backgroundColor: "#0071bd",
-        borderColor: "#0071bd",
+        backgroundColor: "#222",
+        borderColor: "#800080",
       },
     ],
   };
