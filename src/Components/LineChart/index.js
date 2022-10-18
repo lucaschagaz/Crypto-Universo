@@ -15,7 +15,7 @@ import { Line } from "react-chartjs-2";
 
 import styles from "./LineChart.module.css";
 
-const LineChart = ({ coinHistory, currentPrice, coinName }) => {
+const LineChart = ({ coinHistory, currentPrice, coinName, color }) => {
   const coinPrice = [];
   const coinTimestamp = [];
 
@@ -48,8 +48,8 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         label: "Price In USD",
         data: coinPrice,
         fill: false,
-        backgroundColor: "#222",
-        borderColor: "#800080",
+        backgroundColor: color,
+        borderColor: color,
       },
     ],
   };

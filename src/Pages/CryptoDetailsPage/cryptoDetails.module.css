@@ -15,7 +15,6 @@
     width: 100%;    
     border: none;
     padding: 5px 10px;
-    color: purple;
     font-size: large;
     font-weight: 600;
     margin-bottom: 30px;
@@ -30,18 +29,20 @@
     margin: 20px 0;    
 }
 .card_Details_Stats{
-    margin: 0 auto;
+    margin: 1.5em auto;
 }
 .coin_stats{
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: purple;
     color: #fff;
     max-width: 400px;
     margin: 10px 0 ;
     padding: 20px;    
+}
+.coin_stats p{
+    font-weight: 600;
 }
 .coin_stats_heading{
     display: flex;
@@ -55,16 +56,15 @@
 }
 .coin_desc h3{
     margin: 0 1em;
-    color:purple;
 }
 .coin_desc p{
     margin: 20px 1em;
+    color:#222;
 }
 .link_name{
     font-size: 2em;
 }
 .coin_desc_link{
-    background-color: purple;
     color:#fff;
     margin: 2em auto;
     flex-wrap: wrap;

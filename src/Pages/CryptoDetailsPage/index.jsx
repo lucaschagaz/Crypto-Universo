@@ -26,7 +26,6 @@ const CryptoDetailsPage = () => {
     console.log(timePeriod)
   },[timePeriod])
 
-  console.log(coinHistory?.data?.history.timestamp)
 
   if (isLoading || isFetching ) return <Loading/>;
 
@@ -35,7 +34,6 @@ const CryptoDetailsPage = () => {
   const stats = [
     { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
     { title: 'Rank', value: cryptoDetails?.rank, icon: <NumberOutlined /> },
-    // { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`, icon: <ThunderboltOutlined /> },
     { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
     { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
   ];
@@ -48,21 +46,32 @@ const CryptoDetailsPage = () => {
     { title: 'Circulating Supply', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
   ];
 
+  const color = data?.data?.coin.color
 
   return (
     <Conteiner CustomClass="cryptoDetails_conteiner">
       <div className={styles.coin_heading_container}>
-        <h1>
+        <h1 style={{color: color}}>
           {data?.data?.coin.name} ({data?.data?.coin.symbol}) Price
         </h1>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </div>
       <div className={styles.coin_select}>
-        <select classname="coin-select" onChange={(value) =>(setTimeperiod(value))}  placeholder="Selecione o periodo">
-          {time.map((value)=> <option key={value}>{value}</option>)}
+        <select style={{color: color}}>
+          {time.map((day) => (
+                <option
+                key={day}
+                onClick={() => {setTimeperiod(day);
+                }}
+                >
+                {day}
+                </option>
+              )
+            )
+          }
         </select>
       </div>
-      <LineChart coinHistory={ coinHistory} currentPrice={cryptoDetails.price} coinName={cryptoDetails.name}/>
+      <LineChart color={color} coinHistory={ coinHistory} currentPrice={cryptoDetails.price} coinName={cryptoDetails.name}/>
       <div className={styles.Stats_Conteiner}>
         <div className={styles.card_Details_Stats}>
           <div>
@@ -71,7 +80,7 @@ const CryptoDetailsPage = () => {
           </div>
           <div className={styles.card_Stats}>
             {stats.map(({title, icon, value})=>(
-              <div className={styles.coin_stats}>
+              <div style={{backgroundColor: color}} className={styles.coin_stats}>
                 <div className={styles.coin_stats_heading}>
                   <p>{icon}</p>
                   <p>{title}</p>
@@ -88,7 +97,7 @@ const CryptoDetailsPage = () => {
           </div>
           <div className={styles.card_Stats}>
             {genericStats.map(({title, icon, value})=>(
-              <div className={styles.coin_stats}>
+              <div style={{backgroundColor: color}} className={styles.coin_stats}>
                 <div className={styles.coin_stats_heading}>
                   <p>{icon}</p>
                   <p>{title}</p>
@@ -102,11 +111,13 @@ const CryptoDetailsPage = () => {
       </div>
       <div className={styles.coin_desc}>
         <div>
-          <h3> what is {cryptoDetails.name}</h3>
-          {HTMLReactParser(cryptoDetails.description)}
+          <h3  style={{color: color}} > what is {cryptoDetails.name}</h3>
+          <div  style={{color: color}} >
+            {HTMLReactParser(cryptoDetails.description)}  
+          </div>
         </div>
         <h3 className={styles.link_name}>{cryptoDetails.name} Links</h3>
-        <div className={styles.coin_desc_link}>
+        <div style={{backgroundColor: color}}  className={styles.coin_desc_link}>
           {cryptoDetails.links.map((link)=>(
             <div className={styles.coin_link} key={link.name}>
               <h4>{link.type}</h4>
