@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-// import Search from "../../Components/Search";
 import NoticesCard from "../../Components/NoticesCard";
 import Loading from "../../Components/Loader"
 
 import { useGetNewsQuery } from "../../services/newsApi";
+import { useGetCryptosQuery } from "../../services/cryptoApi";
+
 
 import styles from "./news.module.css";
 
 const NewsPage = ({ simplifeid }) => {
-  // const [searchTerm, setSearchTerm] = useState("bitcoin");
+  const [searchTerm, setSearchTerm] = useState("bitcoin");
   const count = simplifeid ? 3 : 100;
-  const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ count });
+  const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ count, searchTerm});
+  const { data: cryptoList} = useGetCryptosQuery(count);
   const [news, setNews] = useState();
 
   useEffect(() => {
@@ -22,9 +24,7 @@ const NewsPage = ({ simplifeid }) => {
       setNews(cryptoNews?.value);
     }
    
-  }, []);
-
-  console.log(news);
+  }, [searchTerm, searchTerm]);
 
   if (isLoading || isFetching ) return <Loading/>;
 
@@ -32,11 +32,17 @@ const NewsPage = ({ simplifeid }) => {
     <>
       <div className={styles.newsTitle_Conteiner}>
         {!simplifeid && (
-          // <Search
-          //   value={searchTerm}
-          //   handleOnText={(e) => setSearchTerm(e.target.value)}
-          // />
-          <h1>Notícias</h1>
+          <div>
+            <h1>Notícias</h1>
+            <select className={styles.select_seachTerm}> 
+             <option>Selecione um topico</option>
+              {cryptoList?.data?.coins?.map((coin) =>(
+                  <option key={coin.uuid} onClick={() => {setSearchTerm(coin.name)}}>
+                    {coin.name}
+                  </option>
+                ))}
+            </select>
+          </div>
         )}
       </div>
       <div className={styles.news_Conteiner}>

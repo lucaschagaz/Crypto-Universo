@@ -19,11 +19,6 @@ const CryptoCurrencyPage = ({ limit }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(()=>{   
-
-    // if(!isFetching){
-    //   setCryptos(data?.data?.coins)
-    // }
-
     const filteredData = data?.data?.coins.filter((item) => item.name.toLowerCase().includes(searchTerm))
     
     if(!isFetching){
@@ -41,12 +36,14 @@ const CryptoCurrencyPage = ({ limit }) => {
   return (
     <>
       <div className="Currencies-Conteiner">
-        <h2>Observação de Mercado da Crypto Universe</h2>
-        {!limit && 
+        {!limit && (
+          <div>
           <Search value={searchTerm} handleOnText={(e) =>
             setSearchTerm(e.target.value)} 
           />
-        }
+          <h2>Observação de Mercado da Crypto Universe</h2>
+          </div>  
+        )}
       </div>
       <div className="coins-conteiner">
         {cryptos?.map((currency) => (

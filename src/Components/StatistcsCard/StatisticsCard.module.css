@@ -1,0 +1,22 @@
+.Card{
+    width:300px;
+    height:100px;
+    color:#800080;
+    border:2px solid #800080;
+    box-shadow: 2px 2px 2px #999;
+    background-color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content: space-around;
+    margin:15px 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.Card svg{
+    width:30px;
+    height:30px;
+}
+.Card p{
+    font-weight:600;
+    font-size:1.2em;
+}

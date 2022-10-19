@@ -1,17 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import "./index.css";
+import styles from "./StatisticsCard.module.css";
 
-const Card = ({title, value, icon}) => {
+const StatistcsCard = ({ title, value, icon }) => {
   return (
-    <div className="Card">
-        <div>
-          <span>{icon}</span> 
-          <p>{title}</p>
-        </div>
+    <div className={styles.Card}>
+      <span>{icon}</span>
+        <p>{title}</p>
         <p>{value}</p>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default StatistcsCard;

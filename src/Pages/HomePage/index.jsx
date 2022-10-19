@@ -2,11 +2,11 @@ import React from "react";
 import millify from "millify";
 
 import { Link } from "react-router-dom";
-import { FaAngleRight, FaStackExchange, FaStoreAlt } from "react-icons/fa";
-import { FcCurrencyExchange, FcStatistics, FcClock } from "react-icons/fc";
+import { FaAngleRight } from "react-icons/fa";
+import { FcDepartment, FcStatistics, FcClock, FcBarChart, FcBullish } from "react-icons/fc";
 
 import Conteiner from "../../Components/Conteiner";
-import Card from "../../Components/StatistcsCard";
+import StatistcsCard from "../../Components/StatistcsCard";
 import Button from "../../Components/Button";
 import CryptoCurrencyPage from "../../Pages/CryptoCurrencyPage";
 import NewsPage from "../../Pages/NewsPage";
@@ -48,31 +48,31 @@ const HomePage = () => {
         <Conteiner CustomClass="statistics">
           <h2>Estatisticas Globais</h2>
           <div className="statistics_items">
-            <Card
-              icon={<FcCurrencyExchange />}
-              title="Total CryptoCurrencies"
+            <StatistcsCard
+              icon={<FcBarChart />}
+              title="N° de Moedas"
               value={globalStats.total}
-            ></Card>
-            <Card
-              icon={<FaStackExchange />}
-              title="Total Exchanges"
+            ></StatistcsCard>
+            <StatistcsCard
+              icon={<FcBullish />}
+              title="N° de Exchanges"
               value={millify(globalStats.totalExchanges)}
-            ></Card>
-            <Card
+            ></StatistcsCard>
+            <StatistcsCard
               icon={<FcStatistics />}
-              title="Total Markets Cap"
+              title="Cap de marcado"
               value={millify(globalStats.totalMarketCap)}
-            ></Card>
-            <Card
+            ></StatistcsCard>
+            <StatistcsCard
               icon={<FcClock />}
-              title="Total 24h volume"
+              title="volume em 24h"
               value={millify(globalStats.total24hVolume)}
-            ></Card>
-            <Card
-              icon={<FaStoreAlt />}
-              title="Total Markets"
+            ></StatistcsCard>
+            <StatistcsCard
+              icon={<FcDepartment />}
+              title="N° de Markets"
               value={millify(globalStats.totalMarkets)}
-            ></Card>
+            ></StatistcsCard>
           </div>
         </Conteiner>
         <div className="header_sections">
