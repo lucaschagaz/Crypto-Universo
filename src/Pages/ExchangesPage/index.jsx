@@ -25,7 +25,7 @@ const ExchangesPage = () => {
   console.log(exchageList)
 
   return (
-    <Conteiner CustomClass="Home-Conteiner">
+    <Conteiner CustomClass="Section_Conteiner">
       <div className={styles.exchange_Conteiner}>
         {currencyExchange.map((exchange)=>(
           <a href={exchange.url} key={exchange.id} target="_blank" rel="noreferrer">

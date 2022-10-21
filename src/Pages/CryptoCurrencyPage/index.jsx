@@ -19,7 +19,7 @@ const CryptoCurrencyPage = ({ limit }) => {
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const [itensPerPage, setItems ] = useState(10)
+  const [itensPerPage, setItems ] = useState(9)
   const [currencyPage, setCurrencyPage ] = useState(0)
  
   useEffect(()=>{   
@@ -29,7 +29,6 @@ const CryptoCurrencyPage = ({ limit }) => {
       setCryptos(filteredData)
     }
     
-
   },[data, searchTerm])
 
 
@@ -38,21 +37,21 @@ const CryptoCurrencyPage = ({ limit }) => {
 
   const startIndex = currencyPage * itensPerPage
   const endIndex = startIndex + itensPerPage
-  const currencyList = data?.data?.coins.slice(startIndex, endIndex)
+  const currencyList = cryptos?.slice(startIndex, endIndex)
 
 
  
   console.log(cryptos);
 
   return (
-    <Conteiner CustomClass="Home-Conteiner">
+    <Conteiner CustomClass="Section_Conteiner">
       <div className="Currencies-Conteiner">
         {!limit && (
           <div>
+          <h1>Observação de Mercado da Crypto Universe</h1>
           <Search value={searchTerm} handleOnText={(e) =>
             setSearchTerm(e.target.value)} 
           />
-          <h2>Observação de Mercado da Crypto Universe</h2>
           </div>  
         )}
       </div>
@@ -73,13 +72,13 @@ const CryptoCurrencyPage = ({ limit }) => {
           </Link>
         ))}
       </div>
-    {!limit && (
+    {!limit && cryptos.length > 9 && (
       <Pagination 
         PerPage={itensPerPage}
         currency={currencyPage} 
-        list={data?.data?.coins.length}
+        list={cryptos?.length}
         setCurrencyPage={setCurrencyPage} 
-      />
+      /> 
     )}
     </Conteiner>
   );

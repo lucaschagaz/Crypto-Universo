@@ -32,7 +32,7 @@
     justify-content: center;
 }
 
-.Home-Conteiner{
+.Section_Conteiner{
     flex-direction:column;    
     align-items:center;
 }

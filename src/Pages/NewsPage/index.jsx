@@ -22,7 +22,7 @@ const NewsPage = ({ limit }) => {
   const { data: cryptoList} = useGetCryptosQuery(count);
   const [news, setNews] = useState([]);
 
-  const [itensPerPage, setItems ] = useState(10)
+  const [itensPerPage, setItems ] = useState(9)
   const [currencyPage, setCurrencyPage ] = useState(0)
 
   useEffect(() => {
@@ -41,8 +41,7 @@ const NewsPage = ({ limit }) => {
   const currencyList = news.slice(startIndex, endIndex)
 
   return (
-    <Conteiner CustomClass="Home-Conteiner">
-
+    <Conteiner CustomClass="Section_Conteiner">
       <div className={styles.newsTitle_Conteiner}>
         {!limit && (
           <div>
@@ -62,7 +61,9 @@ const NewsPage = ({ limit }) => {
         {currencyList.map((news, i) => (
             <a href={news.url} key={i} target="_blank" rel="noreferrer">
             <NoticesCard
-              name={news.name}
+              name={news.name.length > 100
+                ? `${news.name.substring(0, 100)}...`
+                : news.name}
               image={news?.image?.thumbnail?.contentUrl}
               description={
                 news.description.length > 100

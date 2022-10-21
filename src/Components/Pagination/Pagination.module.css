@@ -1,7 +1,10 @@
 .pagination_Button{
-    margin: 0 10px;
+    margin: 30px 10px;
     padding: 10px;
     background-color: purple;
     color:#fff;
     cursor:pointer;
+}
+.pagination_Button:hover{
+    opacity:0.5;
 }
