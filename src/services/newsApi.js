@@ -17,7 +17,13 @@ export const NewsApi = createApi({
                 return{
                     url:'/search',
                     headers: CurrenciesNewsHeaders,
-                    params: {q:searchTerm, safeSearch: 'Off', textFormat: 'Raw', freshness: 'Day', count:count}         
+                    params: {
+                        q:searchTerm, 
+                        safeSearch: 'Off', 
+                        textFormat: 'Raw', 
+                        freshness: 'Day',
+                        count:count
+                    }
                 }
             }
         })
