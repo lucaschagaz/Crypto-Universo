@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import CardCoin from "../../Components/CardCoin";
 import Search from "../../Components/Search"
 import Loading from "../../Components/Loader"
-
+import Pagination from "../../Components/Pagination"
+import Conteiner from '../../Components/Conteiner';
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 
@@ -15,9 +16,12 @@ import "./index.css";
 const CryptoCurrencyPage = ({ limit }) => {
   const count = limit ? 10 : 100;
   const { data, isFetching, isLoading } = useGetCryptosQuery(count);
-  const [cryptos, setCryptos] = useState();
+  const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
+  const [itensPerPage, setItems ] = useState(10)
+  const [currencyPage, setCurrencyPage ] = useState(0)
+ 
   useEffect(()=>{   
     const filteredData = data?.data?.coins.filter((item) => item.name.toLowerCase().includes(searchTerm))
     
@@ -29,12 +33,19 @@ const CryptoCurrencyPage = ({ limit }) => {
   },[data, searchTerm])
 
 
-  console.log(cryptos);
 
   if (isLoading || isFetching ) return <Loading/>;
 
+  const startIndex = currencyPage * itensPerPage
+  const endIndex = startIndex + itensPerPage
+  const currencyList = data?.data?.coins.slice(startIndex, endIndex)
+
+
+ 
+  console.log(cryptos);
+
   return (
-    <>
+    <Conteiner CustomClass="Home-Conteiner">
       <div className="Currencies-Conteiner">
         {!limit && (
           <div>
@@ -46,7 +57,7 @@ const CryptoCurrencyPage = ({ limit }) => {
         )}
       </div>
       <div className="coins-conteiner">
-        {cryptos?.map((currency) => (
+        {currencyList?.map((currency) => (
           <Link key={currency.uuid} to={`/CryptoDetails/${currency.uuid}`}>
             <CardCoin
               name={currency.name}
@@ -62,7 +73,15 @@ const CryptoCurrencyPage = ({ limit }) => {
           </Link>
         ))}
       </div>
-    </>
+    {!limit && (
+      <Pagination 
+        PerPage={itensPerPage}
+        currency={currencyPage} 
+        list={data?.data?.coins.length}
+        setCurrencyPage={setCurrencyPage} 
+      />
+    )}
+    </Conteiner>
   );
 };
 

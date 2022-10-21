@@ -84,7 +84,7 @@ const HomePage = () => {
           <h1>Noticias mais relevantes do mundo cripto</h1>
           <Button text="Ver Mais" link="/news"/>
         </div>
-        <NewsPage simplifeid/>
+        <NewsPage limit />
         <div className="header_sections">
           <h1>6 Exchanges mais valiosas</h1>
           <Button text="Ver Mais" link="/news"/>

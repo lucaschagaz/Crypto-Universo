@@ -1,0 +1,7 @@
+.pagination_Button{
+    margin: 0 10px;
+    padding: 10px;
+    background-color: purple;
+    color:#fff;
+    cursor:pointer;
+}

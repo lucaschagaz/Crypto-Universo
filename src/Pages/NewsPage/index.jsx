@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 
 import NoticesCard from "../../Components/NoticesCard";
 import Loading from "../../Components/Loader"
+import Pagination from "../../Components/Pagination"
+import Conteiner from '../../Components/Conteiner';
+
+
 
 import { useGetNewsQuery } from "../../services/newsApi";
 import { useGetCryptosQuery } from "../../services/cryptoApi";
@@ -11,12 +15,15 @@ import { useGetCryptosQuery } from "../../services/cryptoApi";
 
 import styles from "./news.module.css";
 
-const NewsPage = ({ simplifeid }) => {
+const NewsPage = ({ limit }) => {
   const [searchTerm, setSearchTerm] = useState("bitcoin");
-  const count = simplifeid ? 3 : 100;
+  const count = limit ? 3 : 100;
   const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ count, searchTerm});
   const { data: cryptoList} = useGetCryptosQuery(count);
-  const [news, setNews] = useState();
+  const [news, setNews] = useState([]);
+
+  const [itensPerPage, setItems ] = useState(10)
+  const [currencyPage, setCurrencyPage ] = useState(0)
 
   useEffect(() => {
     
@@ -28,10 +35,16 @@ const NewsPage = ({ simplifeid }) => {
 
   if (isLoading || isFetching ) return <Loading/>;
 
+  
+  const startIndex = currencyPage * itensPerPage
+  const endIndex = startIndex + itensPerPage
+  const currencyList = news.slice(startIndex, endIndex)
+
   return (
-    <>
+    <Conteiner CustomClass="Home-Conteiner">
+
       <div className={styles.newsTitle_Conteiner}>
-        {!simplifeid && (
+        {!limit && (
           <div>
             <h1>Notícias</h1>
             <select className={styles.select_seachTerm}> 
@@ -46,7 +59,7 @@ const NewsPage = ({ simplifeid }) => {
         )}
       </div>
       <div className={styles.news_Conteiner}>
-        {cryptoNews?.value.map((news, i) => (
+        {currencyList.map((news, i) => (
             <a href={news.url} key={i} target="_blank" rel="noreferrer">
             <NoticesCard
               name={news.name}
@@ -63,7 +76,15 @@ const NewsPage = ({ simplifeid }) => {
           </a>
         ))}
       </div>
-    </>
+      {!limit && (
+      <Pagination 
+        PerPage={itensPerPage}
+        currency={currencyPage} 
+        list={news?.length}
+        setCurrencyPage={setCurrencyPage} 
+      />
+    )}
+    </Conteiner>
   );
 };
 
