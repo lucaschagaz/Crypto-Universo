@@ -45,16 +45,14 @@ const CryptoCurrencyPage = ({ limit }) => {
 
   return (
     <Conteiner CustomClass="Section_Conteiner">
-      <div className="Currencies-Conteiner">
         {!limit && (
-          <div>
+          <div className="Currencies-Conteiner">
           <h1>Observação de Mercado da Crypto Universe</h1>
           <Search value={searchTerm} handleOnText={(e) =>
             setSearchTerm(e.target.value)} 
           />
           </div>  
         )}
-      </div>
       <div className="coins-conteiner">
         {currencyList?.map((currency) => (
           <Link key={currency.uuid} to={`/CryptoDetails/${currency.uuid}`}>

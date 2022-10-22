@@ -42,7 +42,7 @@ h1{
 }
 .sliderConteiner{
     height: 160px;
-    margin-top: 3em;
+    margin: 4em 0;
     width: 100%;
     border-top:1px solid purple;
     border-bottom:1px solid purple;
@@ -62,8 +62,16 @@ h2{
     width:100%;
 }
 .header_sections{
-    width:100%;
     display:flex;
     align-items:center;
-    justify-content: space-between;    
+    justify-content: center;
+    flex-direction: column;
+    margin: 3em 0 2em 0;    
+}
+.header_sections_link{
+    margin-bottom:1em;    
+    width:90%;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
 }

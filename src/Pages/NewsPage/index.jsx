@@ -30,21 +30,20 @@ const NewsPage = ({ limit }) => {
     if(!isFetching){
       setNews(cryptoNews?.value);
     }
-   
-  }, [searchTerm, searchTerm]);
+    
+  }, [cryptoNews, searchTerm]);
 
   if (isLoading || isFetching ) return <Loading/>;
 
   
   const startIndex = currencyPage * itensPerPage
   const endIndex = startIndex + itensPerPage
-  const currencyList = news.slice(startIndex, endIndex)
+  const currencyList = news?.slice(startIndex, endIndex)
 
   return (
     <Conteiner CustomClass="Section_Conteiner">
-      <div className={styles.newsTitle_Conteiner}>
         {!limit && (
-          <div>
+          <div  className={styles.newsTitle_Conteiner}>
             <h1>Notícias</h1>
             <select className={styles.select_seachTerm}> 
              <option>Selecione um topico</option>
@@ -56,9 +55,8 @@ const NewsPage = ({ limit }) => {
             </select>
           </div>
         )}
-      </div>
       <div className={styles.news_Conteiner}>
-        {currencyList.map((news, i) => (
+        {currencyList?.map((news, i) => (
             <a href={news.url} key={i} target="_blank" rel="noreferrer">
             <NoticesCard
               name={news.name.length > 100

@@ -1,12 +1,11 @@
+h1{
+    margin-right: 20px;
+}
 .newsTitle_Conteiner{
     display:flex;
     flex-wrap: wrap;
     margin: 4em auto 0 auto;
     width: 100%;
-}
-.newsTitle_Conteiner h2{
-    padding: 10px;
-    font-size: 2em;
 }
 .news_Conteiner{
     width:100vw;
@@ -17,8 +16,8 @@
 }
 .select_seachTerm{
     width: 300px;
-    padding:10px;
-    background-color: #f1f1f1;
+    background-color: #e6e4e4;
+    border-radius: 5px;;
     color:#222;
     font-weight:600;
     border:none;

@@ -2,15 +2,17 @@
     width:300px;
     height:100px;
     color:#800080;
-    border:2px solid #800080;
-    box-shadow: 2px 2px 2px #999;
-    background-color:#fff;
     display:flex;
     align-items:center;
     justify-content: space-around;
-    margin:15px 10px;
+    margin:15px 20px;
     padding: 10px;
+    background: rgba( 255, 255, 255, 0.35 );
+    box-shadow: 0 8px 20px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 13.5px );
+    -webkit-backdrop-filter: blur( 13.5px );
     border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .Card svg{
     width:30px;

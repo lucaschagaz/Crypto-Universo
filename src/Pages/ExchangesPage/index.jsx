@@ -10,7 +10,7 @@ import ExchangeCard from '../../Components/exchangeCard';
 
 import styles from "./exchange.module.css"
 
-const ExchangesPage = () => {
+const ExchangesPage = ({ limit }) => {
 
   const { data:exchageList , isFetching, isLoading} = useGetExchangQuery();
   const [itensPerPage, setItems ] = useState(9)
@@ -26,6 +26,13 @@ const ExchangesPage = () => {
 
   return (
     <Conteiner CustomClass="Section_Conteiner">
+      <div className="Currencies-Conteiner">
+        {!limit && (
+          <div>
+          <h1>Observação de Mercado da Crypto Universe</h1>
+          </div>  
+        )}
+      </div>
       <div className={styles.exchange_Conteiner}>
         {currencyExchange.map((exchange)=>(
           <a href={exchange.url} key={exchange.id} target="_blank" rel="noreferrer">
