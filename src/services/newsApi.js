@@ -8,8 +8,8 @@ const CurrenciesNewsHeaders = {
     'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
 }
 
-export const NewsApi = createApi({
-    reducerPath:"NewsApi",
+export const SearcNewsApi = createApi({
+    reducerPath:"SearcNewsApi",
     baseQuery: fetchBaseQuery({baseUrl}),
     endpoints:(builder)=>({
         getNews:builder.query({
@@ -30,4 +30,4 @@ export const NewsApi = createApi({
     })
 })
 
-export const { useGetNewsQuery } = NewsApi;
+export const { useGetNewsQuery } = SearcNewsApi;
