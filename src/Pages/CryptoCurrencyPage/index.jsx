@@ -14,7 +14,7 @@ import { useGetCryptosQuery } from "../../services/cryptoApi";
 import "./index.css";
 
 const CryptoCurrencyPage = ({ limit }) => {
-  const count = limit ? 10 : 100;
+  const count = limit ? 3 : 100;
   const { data, isFetching, isLoading } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -47,10 +47,10 @@ const CryptoCurrencyPage = ({ limit }) => {
     <Conteiner CustomClass="Section_Conteiner">
         {!limit && (
           <div className="Currencies-Conteiner">
-          <h1>Observação de Mercado da Crypto Universe</h1>
-          <Search value={searchTerm} handleOnText={(e) =>
-            setSearchTerm(e.target.value)} 
-          />
+            <h1>Observação de Mercado da Crypto Universe</h1>
+            <Search value={searchTerm} handleOnText={(e) =>
+              setSearchTerm(e.target.value)} 
+            />
           </div>  
         )}
       <div className="coins-conteiner">

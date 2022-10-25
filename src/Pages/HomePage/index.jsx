@@ -21,31 +21,42 @@ import Loading from "../../Components/Loader";
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 
-import "./index.css";
+import styles from "./HomePage.module.css";
 
 const HomePage = () => {
+
   const { data, isFetching, isLoading } = useGetCryptosQuery();
   const globalStats = data?.data?.stats;
-
-  console.log(data);
 
   if (isLoading || isFetching) return <Loading />;
 
   return (
     <>
       <Conteiner CustomClass="homePage_Conteiner">
-        <h1>Descubra, Analise e Compre cripto ativos</h1>
-        <div className="buttons">
-          <button> Descubra agora</button>
-          <Link to="/">
-            <span>
-              <FaAngleRight />
-            </span>
-            Criar
-          </Link>
+        <div className={styles.header_infos}>
+          <h1>Descubra, Analise e Compre cripto ativos</h1>
+          <div className={styles.header_infos_buttons}>
+            <button> <Link to="/Cryptocurrencies">Descubra agora</Link></button>
+            <Link to="/">
+              <span>
+                <FaAngleRight />
+              </span>
+              Login
+            </Link>
+          </div>
+        </div>
+        {/* <div className={styles.sliderConteiner}>
+          <h2>Os Principais Ativos em tempo real.</h2>
+        </div> */}
+        <div className={styles.header_sections}>
+          <div  className={styles.header_sections_link}>
+            <h1>Noticias mais relevantes do mundo cripto</h1>
+            <Button text="Ver Mais" link="/news" />
+          </div>
+          <NewsPage limit />
         </div>
         <h2>Estatisticas Globais</h2>
-        <div className="statistics_items">
+        <div className={styles.statistics_items}>
           <StatistcsCard
             icon={<FcBarChart />}
             title="N° de Moedas"
@@ -72,25 +83,15 @@ const HomePage = () => {
             value={millify(globalStats.totalMarkets)}
           ></StatistcsCard>
         </div>
-        <div className="sliderConteiner">
-          <h2>Os Principais Ativos em tempo real.</h2>
-        </div>
-        <div className="header_sections">
-          <div className="header_sections_link">
-            <h1>TOP 9 Cripto Moedas mais pupulares</h1>
+        <div className={styles.header_sections}>
+          <div className={styles.header_sections_link}>
+            <h1>TOP 3 Cripto Moedas</h1>
             <Button text="Ver Mais" link="/Cryptocurrencies" />
           </div>
           <CryptoCurrencyPage limit />
         </div>
-        <div className="header_sections">
-          <div  className="header_sections_link">
-            <h1>Noticias mais relevantes do mundo cripto</h1>
-            <Button text="Ver Mais" link="/news" />
-          </div>
-          <NewsPage limit />
-        </div>
-        <div className="header_sections">
-          <div  className="header_sections_link">
+        <div className={styles.header_sections}>
+          <div  className={styles.header_sections_link}>
             <h1>Exchanges mais valiosas</h1>
             <Button text="Ver Mais" link="/exchanges" />
           </div>

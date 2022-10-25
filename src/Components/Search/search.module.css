@@ -1,11 +1,6 @@
-.search_Counteiner{
-    width:100%;
-}
 .search{
     display:flex;
     justify-content: center;   
-    padding:10px;
-
 }
 .search input, button{
     height: 40px;
@@ -15,13 +10,15 @@
     border:none;
 }
 .search input{   
-    width: 100%; 
-    color:#222;    
     background-color: #f1f1f1;
+}
+.search input::placeholder{
+    color:#222;
 }
 .search button{
     padding: 0 5px;
     margin-left: 10px;
     background-color: purple;
     color:#fff;   
+    cursor: pointer;
 }

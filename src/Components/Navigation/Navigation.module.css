@@ -1,0 +1,82 @@
+.navigation_Conteiner{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 100%;
+    z-index: 9999;
+}
+.routes, .isOpen{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.menu{
+    display: none;
+}
+.menu button{
+    background-color:transparent;
+    font-size: 0.9em;
+}
+.menu button svg{
+    position: relative;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index:9999;
+}
+.login{
+    width: auto;
+    padding: 10px;
+    background-color: #800080;
+    text-align: center;
+    color: #fff;
+    border:none;
+}
+.login:hover{
+    opacity: 0.5;
+}
+.login a{
+    color: #fff;
+    letter-spacing: 0.2em;
+}
+
+@media screen and (max-width: 780px){
+    .navigation_Conteiner{
+        width: auto;
+    }
+    .menu{
+        display:block;
+    }
+    .routes{
+        display: none;
+    }
+    .isOpen{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50%;
+        z-index:99;
+        background-color: #c64ee4;
+    }
+    .routes_items{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 70%;
+        z-index:99;
+    }
+    .routes_items a{
+        color: #fff;
+        letter-spacing: 0.2em;
+    }
+   
+}
