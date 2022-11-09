@@ -1,5 +1,6 @@
 .coin_heading_container{
-    margin:0 auto 30px auto;
+    /* margin:0 auto 30px auto; */
+    margin: 150px auto 1em auto;
     display: flex;
     align-items: center;
     justify-content: center;
