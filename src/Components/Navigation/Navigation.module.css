@@ -20,6 +20,7 @@
 .menu button{
     background-color:transparent;
     font-size: 0.9em;
+    transition: 5s ease;
 }
 .menu button svg{
     position: relative;
@@ -30,7 +31,6 @@
     z-index:9999;
 }
 .login{
-    width: auto;
     padding: 10px;
     background-color: #800080;
     text-align: center;
@@ -58,25 +58,30 @@
     .isOpen{
         display:flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: stretch;
+        align-items: flex-start;
         position: absolute;
-        top: 0;
+        top: 80px;
         right: 0;
-        height: 100%;
-        width: 50%;
+        height: 300px;
+        width: 100%;
         z-index:99;
-        background-color: #c64ee4;
+        background-color: #fff;
     }
-    .routes_items{
-        display:flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 70%;
-        z-index:99;
+    .isOpen a{
+        border-top:1px solid #999;
+        width: 100%;
+        padding:15px;
     }
-    .routes_items a{
-        color: #fff;
-        letter-spacing: 0.2em;
+    .isOpen a:nth-of-type(3){
+        border-bottom:1px solid #999;        
     }
-   
+    .isOpen .login a{
+        border: none;
+    }
+    .login{
+        width: 90%;
+        align-self:center;
+        margin-top: 10%;
+    }
 }

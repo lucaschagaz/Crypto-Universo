@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1419.4" height="1231.4" viewBox="0 0 1419.4 1231.4">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.816" y1="0.268" x2="0.215" y2="0.925" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#1d0036"/>
+      <stop offset="1" stop-color="#580058"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_307" data-name="Group 307" transform="translate(-388.6 -1321.6)">
+    <circle id="Ellipse_13" data-name="Ellipse 13" cx="585.5" cy="585.5" r="585.5" transform="translate(556 1382)" fill="url(#linear-gradient)"/>
+    <g id="Group_303" data-name="Group 303" transform="translate(488.5 1421.5)">
+      <g id="Group_302" data-name="Group 302">
+        <line id="Line_11" data-name="Line 11" x1="321" y1="321" transform="translate(714 239)" fill="rgba(0,0,0,0)" stroke="aqua" stroke-linecap="round" stroke-width="14"/>
+        <line id="Line_12" data-name="Line 12" x1="230" y1="230" transform="translate(0 312)" fill="rgba(0,0,0,0)" stroke="aqua" stroke-linecap="round" stroke-width="14"/>
+        <line id="Line_13" data-name="Line 13" x1="439" y1="439" transform="translate(356)" fill="rgba(0,0,0,0)" stroke="aqua" stroke-linecap="round" stroke-width="14"/>
+      </g>
+      <g id="Group_301" data-name="Group 301">
+        <line id="Line_8" data-name="Line 8" x1="321" y1="321" transform="translate(714 239)" fill="none" stroke="aqua" stroke-linecap="round" stroke-width="14"/>
+        <line id="Line_9" data-name="Line 9" x1="230" y1="230" transform="translate(0 312)" fill="none" stroke="aqua" stroke-linecap="round" stroke-width="14"/>
+        <line id="Line_10" data-name="Line 10" x1="439" y1="439" transform="translate(356)" fill="none" stroke="aqua" stroke-linecap="round" stroke-width="14"/>
+      </g>
+    </g>
+    <circle id="Ellipse_14" data-name="Ellipse 14" cx="180" cy="180" r="180" transform="translate(1448 1344)" fill="#f0f"/>
+  </g>
+</svg>

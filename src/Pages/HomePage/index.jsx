@@ -19,6 +19,9 @@ import NewsPage from "../../Pages/NewsPage";
 import ExchangesPage from "../../Pages/ExchangesPage";
 import Loading from "../../Components/Loader";
 
+import Planet from "../../icons/planet.svg"
+// import Planet from "../../icons/planet-header.svg"
+
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 
 import styles from "./HomePage.module.css";
@@ -34,54 +37,58 @@ const HomePage = () => {
     <>
       <Conteiner CustomClass="homePage_Conteiner">
         <div className={styles.header_infos}>
-          <h1>Descubra, Analise e Compre cripto ativos</h1>
-          <div className={styles.header_infos_buttons}>
-            <button> <Link to="/Cryptocurrencies">Descubra agora</Link></button>
-            <Link to="/">
-              <span>
-                <FaAngleRight />
-              </span>
-              Login
-            </Link>
+          <div className={styles.header_infos_header}>
+            <h1>Descubra, Analise e Compare cripto ativos</h1>
+            <div className={styles.header_infos_buttons}>
+              <button> <Link to="/Cryptocurrencies">Descubra agora</Link></button>
+              <Link to="/">
+                <span>
+                  <FaAngleRight />
+                </span>
+                Login
+              </Link>
+            </div>
+          </div>
+          <div className={styles.image_home}>
+            <img src={Planet} alt="planet"/>
           </div>
         </div>
-        {/* <div className={styles.sliderConteiner}>
-          <h2>Os Principais Ativos em tempo real.</h2>
-        </div> */}
         <div className={styles.header_sections}>
           <div  className={styles.header_sections_link}>
-            <h1>Noticias mais relevantes do mundo cripto</h1>
+            <h1>Noticias relevantes do mundo cripto</h1>
             <Button text="Ver Mais" link="/news" />
           </div>
           <NewsPage limit />
         </div>
-        <h2>Estatisticas Globais</h2>
-        <div className={styles.statistics_items}>
-          <StatistcsCard
-            icon={<FcBarChart />}
-            title="N° de Moedas"
-            value={globalStats.total}
-          ></StatistcsCard>
-          <StatistcsCard
-            icon={<FcBullish />}
-            title="N° de Exchanges"
-            value={millify(globalStats.totalExchanges)}
-          ></StatistcsCard>
-          <StatistcsCard
-            icon={<FcStatistics />}
-            title="Cap de marcado"
-            value={millify(globalStats.totalMarketCap)}
-          ></StatistcsCard>
-          <StatistcsCard
-            icon={<FcClock />}
-            title="volume em 24h"
-            value={millify(globalStats.total24hVolume)}
-          ></StatistcsCard>
-          <StatistcsCard
-            icon={<FcDepartment />}
-            title="N° de Markets"
-            value={millify(globalStats.totalMarkets)}
-          ></StatistcsCard>
+        <div className={styles.statistics_conteiner}>
+          <h2>Estatisticas Globais</h2>
+          <div className={styles.statistics_items}>
+            <StatistcsCard
+              icon={<FcBarChart />}
+              title="N° de Moedas"
+              value={globalStats.total}
+            ></StatistcsCard>
+            <StatistcsCard
+              icon={<FcBullish />}
+              title="N° de Exchanges"
+              value={millify(globalStats.totalExchanges)}
+            ></StatistcsCard>
+            <StatistcsCard
+              icon={<FcStatistics />}
+              title="Cap de marcado"
+              value={millify(globalStats.totalMarketCap)}
+            ></StatistcsCard>
+            <StatistcsCard
+              icon={<FcClock />}
+              title="volume em 24h"
+              value={millify(globalStats.total24hVolume)}
+            ></StatistcsCard>
+            <StatistcsCard
+              icon={<FcDepartment />}
+              title="N° de Markets"
+              value={millify(globalStats.totalMarkets)}
+            ></StatistcsCard>
+          </div>
         </div>
         <div className={styles.header_sections}>
           <div className={styles.header_sections_link}>

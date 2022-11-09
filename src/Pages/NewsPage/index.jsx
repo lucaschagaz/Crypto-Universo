@@ -59,8 +59,8 @@ const NewsPage = ({ limit }) => {
         {currencyList?.map((news, i) => (
             <a href={news.url} key={i} target="_blank" rel="noreferrer">
             <NoticesCard
-              name={news.name.length > 100
-                ? `${news.name.substring(0, 100)}...`
+              name={news.name.length > 80
+                ? `${news.name.substring(0, 80)}...`
                 : news.name}
               image={news?.image?.thumbnail?.contentUrl}
               description={

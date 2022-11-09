@@ -26,13 +26,11 @@ const ExchangesPage = ({ limit }) => {
 
   return (
     <Conteiner CustomClass="Section_Conteiner">
-      <div className="Currencies-Conteiner">
         {!limit && (
-          <div>
+          <div className={styles.Currencies_Conteiner}>
           <h1>Observação de Mercado da Crypto Universe</h1>
           </div>  
         )}
-      </div>
       <div className={styles.exchange_Conteiner}>
         {currencyExchange.map((exchange)=>(
           <a href={exchange.url} key={exchange.id} target="_blank" rel="noreferrer">

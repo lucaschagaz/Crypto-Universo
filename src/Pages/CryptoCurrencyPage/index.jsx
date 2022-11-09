@@ -52,6 +52,7 @@ const CryptoCurrencyPage = ({ limit }) => {
               setSearchTerm(e.target.value)} 
             />
           </div>  
+          
         )}
       <div className="coins-conteiner">
         {currencyList?.map((currency) => (
