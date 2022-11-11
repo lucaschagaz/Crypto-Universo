@@ -22,3 +22,8 @@
     font-weight:600;
     font-size:1.2em;
 }
+@media screen and (max-width:780px) {
+    .Card p{
+        font-size:1em;
+    }
+}

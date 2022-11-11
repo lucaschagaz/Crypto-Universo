@@ -28,7 +28,7 @@ const ExchangesPage = ({ limit }) => {
     <Conteiner CustomClass="Section_Conteiner">
         {!limit && (
           <div className={styles.Currencies_Conteiner}>
-          <h1>Observação de Mercado da Crypto Universe</h1>
+            <h1>Observação de Mercado da Crypto Universe</h1>
           </div>  
         )}
       <div className={styles.exchange_Conteiner}>

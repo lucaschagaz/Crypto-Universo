@@ -6,7 +6,7 @@
     align-items: center;
     flex-wrap:wrap;
     margin:0 auto;
-    width:100%;   
+    width:100vw;   
     height: 80px;
     background-color: #fff;
     z-index: 99999;

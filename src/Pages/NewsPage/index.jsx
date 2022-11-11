@@ -16,56 +16,59 @@ import { useGetCryptosQuery } from "../../services/cryptoApi";
 import styles from "./news.module.css";
 
 const NewsPage = ({ limit }) => {
+
   const [searchTerm, setSearchTerm] = useState("bitcoin");
   const count = limit ? 3 : 100;
-  const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ count, searchTerm});
-  const { data: cryptoList} = useGetCryptosQuery(count);
+  const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ count, searchTerm });
+  const { data: cryptoList } = useGetCryptosQuery(count);
   const [news, setNews] = useState([]);
 
-  const [itensPerPage, setItems ] = useState(9)
-  const [currencyPage, setCurrencyPage ] = useState(0)
+  const [itensPerPage, setItems] = useState(9)
+  const [currencyPage, setCurrencyPage] = useState(0)
 
   useEffect(() => {
-    
-    if(!isFetching){
+
+    if (!isFetching) {
       setNews(cryptoNews?.value);
+      setSearchTerm("bitcoin")
     }
-    
+    console.log(searchTerm, "Mudou")
+
   }, [cryptoNews, searchTerm]);
 
-  if (isLoading || isFetching ) return <Loading/>;
+  if (isLoading || isFetching) return <Loading />;
 
-  
+
   const startIndex = currencyPage * itensPerPage
   const endIndex = startIndex + itensPerPage
   const currencyList = news?.slice(startIndex, endIndex)
 
   return (
     <Conteiner CustomClass="Section_Conteiner">
-        {!limit && (
-          <div  className={styles.newsTitle_Conteiner}>
-            <h1>Notícias</h1>
-            <select className={styles.select_seachTerm}> 
-             <option>Selecione um topico</option>
-              {cryptoList?.data?.coins?.map((coin) =>(
-                  <option key={coin.uuid} onClick={() => {setSearchTerm(coin.name)}}>
-                    {coin.name}
-                  </option>
-                ))}
-            </select>
-          </div>
-        )}
+      {!limit && (
+        <div className={styles.newsTitle_Conteiner}>
+          <h1>Notícias</h1>
+          <select className={styles.select_seachTerm}>
+            <option>Selecione um topico</option>
+              {cryptoList?.data?.coins?.map((coin) => (
+                <option key={coin.uuid} onClick={console.log(coin.name)}>
+                  {coin.name}
+                </option>
+              ))}
+          </select>
+        </div>
+      )}
       <div className={styles.news_Conteiner}>
         {currencyList?.map((news, i) => (
-            <a href={news.url} key={i} target="_blank" rel="noreferrer">
+          <a href={news.url} key={i} target="_blank" rel="noreferrer">
             <NoticesCard
               name={news.name.length > 50
                 ? `${news.name.substring(0, 50)}...`
                 : news.name}
               image={news?.image?.thumbnail?.contentUrl}
               description={
-                news.description.length > 100
-                  ? `${news.description.substring(0, 100)}...`
+                news.description.length > 80
+                  ? `${news.description.substring(0, 80)}...`
                   : news.description
               }
               textProvider={news.provider[0]?.name}
@@ -76,13 +79,13 @@ const NewsPage = ({ limit }) => {
         ))}
       </div>
       {!limit && (
-      <Pagination 
-        PerPage={itensPerPage}
-        currency={currencyPage} 
-        list={news?.length}
-        setCurrencyPage={setCurrencyPage} 
-      />
-    )}
+        <Pagination
+          PerPage={itensPerPage}
+          currency={currencyPage}
+          list={news?.length}
+          setCurrencyPage={setCurrencyPage}
+        />
+      )}
     </Conteiner>
   );
 };

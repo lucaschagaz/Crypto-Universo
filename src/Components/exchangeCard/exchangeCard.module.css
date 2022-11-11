@@ -22,6 +22,7 @@
 .card_cabecalho{
     display:flex;
     align-items:center;
+    justify-content: center;
     flex-direction: column;
     padding:20px 0;
     background-color: #f1f1f1;
@@ -45,6 +46,19 @@
     width:45px;
     height:45px;
 }
-.ExchengeCard a{
-    color:#222;
+
+@media screen and (max-width:780px) {
+    .ExchengeCard{
+        width:250px;
+        height:auto;
+    }   
+    .card_cabecalho{
+        padding:5px 0;
+    }
+    .card_cabecalho span{
+        padding: 5px;
+    }
+    .card_infos p{
+        font-size: 13px;
+    }
 }

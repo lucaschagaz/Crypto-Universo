@@ -16,3 +16,8 @@
 .Currencies-Conteiner h1{
     margin-bottom:1em;
 }
+@media screen and (max-width:780px) {
+    .Currencies-Conteiner h1{
+        font-size: 20px;
+    }
+}
