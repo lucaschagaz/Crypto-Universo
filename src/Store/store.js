@@ -10,5 +10,6 @@ export default configureStore({
         [cryptoApi.reducerPath]: cryptoApi.reducer,
         [SearcNewsApi.reducerPath]: SearcNewsApi.reducer,
         [ExchangeApi.reducerPath]: ExchangeApi.reducer,
-    }
+    },
+
 })
