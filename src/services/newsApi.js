@@ -7,7 +7,6 @@ const CurrenciesNewsHeaders = {
     'X-RapidAPI-Key': '4a2e6efff4msh4078238201c4fe3p11d7f1jsnfd547a3e95b1',
     'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
 }
-
 export const SearcNewsApi = createApi({
     reducerPath:"SearcNewsApi",
     baseQuery: fetchBaseQuery({baseUrl}),
