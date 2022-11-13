@@ -28,11 +28,10 @@ const NewsPage = ({ limit }) => {
 
   useEffect(() => {
 
-    if (!isFetching) {
+    if(!isFetching) {
       setNews(cryptoNews?.value);
-      setSearchTerm("bitcoin")
     }
-    console.log(searchTerm, "Mudou")
+
 
   }, [cryptoNews, searchTerm]);
 
@@ -48,14 +47,12 @@ const NewsPage = ({ limit }) => {
       {!limit && (
         <div className={styles.newsTitle_Conteiner}>
           <h1>Notícias</h1>
-          <select className={styles.select_seachTerm}>
-            <option>Selecione um topico</option>
-              {cryptoList?.data?.coins?.map((coin) => (
-                <option key={coin.uuid} onClick={console.log(coin.name)}>
-                  {coin.name}
-                </option>
-              ))}
-          </select>
+          {/* <select>
+            {cryptoList?.data?.coins?.map((coin)=>(
+              <option onClick={()=>{setSearchTerm(coin.name)}}>{coin.name}</option>
+            ))
+            }
+          </select> */}
         </div>
       )}
       <div className={styles.news_Conteiner}>
