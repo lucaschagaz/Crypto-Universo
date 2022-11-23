@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import HTMLReactParser from "html-react-parser"
 import millify from "millify" 
-import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined } from '@ant-design/icons';
 
 
 import Conteiner from "../../Components/Conteiner"
@@ -56,20 +56,20 @@ const CryptoDetailsPage = () => {
         </h1>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </div>
-      <div className={styles.coin_select}>
-        <select style={{color: color}}>
+      <div className={styles.period_buttons}>
+        <div style={{color: color}}>
           {time.map((day) => (
-                <option
+                <button style={{color:color}}
                 key={day}
                 onClick={() => {setTimeperiod(day);
                 }}
                 >
                 {day}
-                </option>
+                </button>
               )
             )
           }
-        </select>
+        </div>
       </div>
       <LineChart color={color} coinHistory={ coinHistory} currentPrice={cryptoDetails.price} coinName={cryptoDetails.name}/>
       <div className={styles.Stats_Conteiner}>

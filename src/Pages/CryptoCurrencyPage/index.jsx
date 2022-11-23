@@ -11,7 +11,7 @@ import Conteiner from '../../Components/Conteiner';
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 
-import "./index.css";
+import styles from "./CryptoCurrencyPage.module.css";
 
 const CryptoCurrencyPage = ({ limit }) => {
   const count = limit ? 3 : 100;
@@ -46,7 +46,7 @@ const CryptoCurrencyPage = ({ limit }) => {
   return (
     <Conteiner CustomClass="Section_Conteiner">
         {!limit && (
-          <div className="Currencies-Conteiner">
+          <div className={styles.Currencies_Conteiner}>
             <h1>Observação de Mercado da Crypto Universe</h1>
             <Search value={searchTerm} handleOnText={(e) =>
               setSearchTerm(e.target.value)} 
@@ -54,7 +54,7 @@ const CryptoCurrencyPage = ({ limit }) => {
           </div>  
           
         )}
-      <div className="coins-conteiner">
+      <div className={styles.coins_conteiner}>
         {currencyList?.map((currency) => (
           <Link key={currency.uuid} to={`/CryptoDetails/${currency.uuid}`}>
             <CardCoin

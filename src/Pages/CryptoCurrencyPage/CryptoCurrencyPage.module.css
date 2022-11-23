@@ -1,4 +1,4 @@
-.Currencies-Conteiner{
+.Currencies_Conteiner{
     display:flex;
     justify-content:space-around;
     flex-wrap: wrap;
@@ -6,18 +6,18 @@
     padding: 10px;;
     width:100%;
 }
-.coins-conteiner{
+.coins_conteiner{
     width:100%;
     display:flex;
     align-items:center;
     flex-wrap:wrap;
     justify-content:center;
 }
-.Currencies-Conteiner h1{
+.Currencies_Conteiner h1{
     margin-bottom:1em;
 }
 @media screen and (max-width:780px) {
-    .Currencies-Conteiner h1{
+    .Currencies_Conteiner h1{
         font-size: 20px;
     }
 }

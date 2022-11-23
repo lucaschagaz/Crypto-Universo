@@ -1,6 +1,5 @@
 .coin_heading_container{
-    /* margin:0 auto 30px auto; */
-    margin: 150px auto 1em auto;
+    margin: 150px 1em 1em 1em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,18 +7,25 @@
 }
 .coin_heading_container h1{
     color:purple;
+}  
+.period_buttons div{
+    width: 100%;
 }
-.coin_select{
-    width: 15%;
+.period_buttons div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 2em;
 }
-.coin_select select{
-    width: 100%;    
-    border: none;
-    padding: 5px 10px;
-    font-size: large;
-    font-weight: 600;
-    margin-bottom: 30px;
-}   
+.period_buttons button{
+    border: 1px solid #252525;
+    width: 60px;
+}
+.period_buttons button:hover{
+    background-color: #800080;
+    color: #f1f1f1;
+}
 .Stats_Conteiner{
     display: flex;
     align-items: flex-start;
@@ -83,4 +89,17 @@
 .coin_link a{
     color:#f1f1f1;
     cursor:pointer;
+}
+@media screen and (max-width:780px) {
+    .coin_heading_container h1{
+        font-size: 25px;
+    }
+    .coin_heading_container p{
+        font-size: 13px;
+    }
+    
+    .period_buttons button{
+        width: 40px;
+    }
+
 }
