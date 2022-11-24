@@ -3,12 +3,14 @@ import { ImMenu } from "react-icons/im";
 import { GrClose } from "react-icons/gr";
 
 import { Link } from "react-router-dom";
+import { CryptoState } from "../../Contexts/LoggedContext";
 
 import styles from "./Navigation.module.css";
+import AuthModal from "../FormAuth/AuthModal";
 
 const Navigation = ({open, setOpen}) => {
 
-  // const [open, setOpen] = useState(true)
+  const { showForm, setShowForm } = CryptoState()
 
   return (
     <nav className={styles.navigation_Conteiner}>
@@ -17,7 +19,13 @@ const Navigation = ({open, setOpen}) => {
           <Link to="/Cryptocurrencies"onClick={()=>{setOpen(!open)}}>Cryptocurrencies</Link>
           <Link to="/News" onClick={()=>{setOpen(!open)}}>Crypto News</Link>
         <div className={styles.login}>
-          <Link to="/">Login</Link>
+          {/* <button onClick={()=>{
+            setShowForm(!showForm)
+          }}>
+            Login
+          </button> */}
+          {/* <Link to="/">Login</Link> */}
+          <AuthModal/>
         </div>
       </div>
       <div  className={styles.menu}>
