@@ -40,7 +40,7 @@ const HomePage = () => {
           <div className={styles.header_infos_header}>
             <h1>Descubra, Analise e Compare cripto ativos</h1>
             <div className={styles.header_infos_buttons}>
-              <button> <Link to="/Cryptocurrencies">Descubra agora</Link></button>4
+              <button> <Link to="/Cryptocurrencies">Descubra agora</Link></button>
               <Link to="/">
                 <span>
                   <FaAngleRight />

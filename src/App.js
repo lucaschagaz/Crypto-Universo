@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 
 import { Header, HomePage, ExchangesPage, CryptoCurrencyPage, CryptoDetailsPage, NewsPage } from "./Components"
 
-
 const App = () => {
   return (
     <Router>

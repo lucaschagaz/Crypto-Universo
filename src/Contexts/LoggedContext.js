@@ -5,13 +5,14 @@ const Crypto = createContext();
 const CryptoContext = ({ children }) => {
   const [logged, setLogged] = useState(true);
   const [wacthList, setwacthList] = useState([]);
+  const [showForm, setShowForm] = useState(false)
 
   useEffect(() => {
     
   }, [wacthList]);
 
   return (
-    <Crypto.Provider value={{ logged, setCurrency, wacthList }}>
+    <Crypto.Provider value={{logged, setLogged, wacthList,showForm, setShowForm}}>
       {children}
     </Crypto.Provider>
   );

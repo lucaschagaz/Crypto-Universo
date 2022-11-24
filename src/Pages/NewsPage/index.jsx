@@ -8,7 +8,6 @@ import Pagination from "../../Components/Pagination"
 import Conteiner from '../../Components/Conteiner';
 
 
-
 import { useGetNewsQuery } from "../../services/newsApi";
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 
