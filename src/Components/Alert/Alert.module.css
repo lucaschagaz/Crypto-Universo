@@ -1,9 +1,7 @@
-.conteiner{
-    position: relative;
-}
+
 .message {
     z-index: 99999;
-    position: absolute;
+    position: fixed;
     top: 90px;
     height: 40px;
     left: 20%;

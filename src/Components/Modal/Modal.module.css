@@ -8,3 +8,18 @@
 .google span{
     margin: 10px 0;
 }
+.login{
+    padding: 3px 7px;
+    background-color: #800080;
+    text-align: center;
+    color: #fff;
+    border:none;
+}
+.login:hover{
+    opacity: 0.5;
+}
+.login button{
+    color: #fff;
+    letter-spacing: 0.2em;
+    background-color: transparent;
+}

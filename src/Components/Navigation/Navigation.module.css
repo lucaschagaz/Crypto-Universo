@@ -30,21 +30,7 @@
     cursor: pointer;
     z-index:9999;
 }
-.login{
-    padding: 3px 7px;
-    background-color: #800080;
-    text-align: center;
-    color: #fff;
-    border:none;
-}
-.login:hover{
-    opacity: 0.5;
-}
-.login button{
-    color: #fff;
-    letter-spacing: 0.2em;
-    background-color: transparent;
-}
+
 @media screen and (max-width:944px) {
     .navigation_Conteiner{
         width: auto;

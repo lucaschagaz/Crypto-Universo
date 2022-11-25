@@ -1,4 +1,14 @@
+.center{
+    z-index: 0;
+    background-color: rgba(21, 21, 21, 0.393);
+    width: 100vw;
+    height: 100vh;
+    position:fixed;
+    top:0;
+    right: 0;
+}
 .Conteiner{
+    z-index: 1;
     width: 400px;
     padding: 25;
     height: 100vh;
@@ -8,7 +18,7 @@
     position: fixed;
     top:80px;
     right: 0;
-    background-color: rgb(52, 51, 51);
+    background-color: #800080;
 }
 .none{
     display: none;
@@ -33,17 +43,18 @@
 }
 .watchList{
     /* flex: 1; */
-    min-height: 350px;
-    width: 100%;
-    /* background-color: grey; */
+    min-height: 300px;
+    width: 90%;
+    background-color: rgb(188, 187, 187);
     border-radius: 10;
     padding: 15;
     padding-top: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* gap: 12; */
+    gap: 12;
     overflow-y: scroll;
+    margin: 1em 0;
 }
 .logOut{
     display: flex;
@@ -57,10 +68,9 @@
     background-color: #fcf8fe2d;
     margin-bottom: 10px;
     border-radius: 10px;
-    /* opacity: 3; */
+    cursor: pointer;
 }
 .logOut:hover{
-    /* opacity:1; */
     background-color: #fcf8fe51;
 }
 .rodaPé{

@@ -33,7 +33,8 @@ export default function AuthModal({open:openMenu, setOpen:setOpenMenu}) {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
-  const { setAlert } = CryptoState();
+
+  const { user,setUser, setAlert } = CryptoState();
 
   const handleOpen = () => {
     setOpen(true);
@@ -74,7 +75,7 @@ export default function AuthModal({open:openMenu, setOpen:setOpenMenu}) {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen} >
+      <button className={styles.login} type="button" onClick={handleOpen} >
         <p onClick={()=>{setOpenMenu(!openMenu)}}>Login</p>
       </button>
       <Modal
