@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../FireBase"
 
 const Crypto = createContext();
 
@@ -14,8 +16,13 @@ const CryptoContext = ({ children }) => {
   });
 
   useEffect(() => {
-    
-  }, [wacthList]);
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) setUser(user);
+      else setUser(null);
+    });
+
+  }, []);
 
   return (
     <Crypto.Provider value={
@@ -24,7 +31,8 @@ const CryptoContext = ({ children }) => {
         setLogged, 
         wacthList,
         alert,
-        setAlert
+        setAlert,
+        user
        }
       }>
       {children}
