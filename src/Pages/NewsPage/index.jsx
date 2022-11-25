@@ -17,7 +17,7 @@ import styles from "./news.module.css";
 const NewsPage = ({ limit }) => {
 
   const [searchTerm, setSearchTerm] = useState("bitcoin");
-  const count = limit ? 3 : 100;
+  const count = limit ? 4 : 100;
   const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ count, searchTerm });
   const { data: cryptoList } = useGetCryptosQuery(count);
   const [news, setNews] = useState([]);

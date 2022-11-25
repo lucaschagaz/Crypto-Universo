@@ -2,11 +2,13 @@ import React from 'react'
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 
 import { Header, HomePage, ExchangesPage, CryptoCurrencyPage, CryptoDetailsPage, NewsPage } from "./Components"
+import Alert from './Components/Alert'
 
 const App = () => {
   return (
     <Router>
         <Header/>
+        <Alert/>
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/exchanges" element={<ExchangesPage/>} /> 

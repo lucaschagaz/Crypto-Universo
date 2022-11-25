@@ -32,7 +32,7 @@ const HomePage = () => {
   const globalStats = data?.data?.stats;
 
   if (isLoading || isFetching) return <Loading />;
-
+  
   return (
     <>
       <Conteiner CustomClass="homePage_Conteiner">
@@ -40,7 +40,11 @@ const HomePage = () => {
           <div className={styles.header_infos_header}>
             <h1>Descubra, Analise e Compare cripto ativos</h1>
             <div className={styles.header_infos_buttons}>
-              <button> <Link to="/Cryptocurrencies">Descubra agora</Link></button>
+              <button>
+                <Link to="/">
+                  Descubra agora
+              </Link>
+              </button>
               <Link to="/">
                 <span>
                   <FaAngleRight />
