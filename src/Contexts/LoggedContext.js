@@ -7,7 +7,7 @@ const Crypto = createContext();
 const CryptoContext = ({ children }) => {
 
   const [user, setUser] = useState(null);
-  const [logged, setLogged] = useState(true);
+  const [logged, setLogged] = useState(false);
   const [wacthList, setwacthList] = useState([]);
   const [alert, setAlert] = useState({
     open: false,
@@ -16,10 +16,11 @@ const CryptoContext = ({ children }) => {
   });
 
   useEffect(() => {
-
     onAuthStateChanged(auth, (user) => {
-      if (user) setUser(user);
-      else setUser(null);
+      if (user) {
+        setUser(user)
+        console.log(user)
+      } else setUser(null);
     });
 
   }, []);
