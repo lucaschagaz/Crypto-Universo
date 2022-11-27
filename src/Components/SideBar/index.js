@@ -24,6 +24,7 @@ const SideBar = ({ a }) => {
   const show = () =>{
     setLogged(!logged)
   } 
+
   return (
     <>
       {user && (
@@ -43,7 +44,7 @@ const SideBar = ({ a }) => {
 
             </div>
             <div className={styles.rodaPé}>
-              <Link to="/WatchListPage">
+              <Link to="/WatchListPage" onClick={show}>
                 Ver WatchList
               </Link>
             </div>
