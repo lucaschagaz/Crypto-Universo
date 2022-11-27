@@ -18,8 +18,9 @@
 .login:hover{
     opacity: 0.5;
 }
-.login button{
-    color: #fff;
-    letter-spacing: 0.2em;
-    background-color: transparent;
+
+@media screen and (max-width:944px) {
+    .login{
+        width: 300px;
+    }
 }

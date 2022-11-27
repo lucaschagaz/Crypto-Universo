@@ -23,8 +23,8 @@
     width: 60px;
 }
 .period_buttons button:hover{
-    background-color: #800080;
-    color: #f1f1f1;
+    background-color: #302e30;
+    color: #fff;
 }
 .Stats_Conteiner{
     display: flex;

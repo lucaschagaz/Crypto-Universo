@@ -30,6 +30,11 @@
     cursor: pointer;
     z-index:9999;
 }
+.auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media screen and (max-width:944px) {
     .navigation_Conteiner{
@@ -49,10 +54,11 @@
         position: absolute;
         top: 80px;
         right: 0;
-        height: 300px;
+        height: auto;
         width: 100%;
         z-index:99;
         background-color: #fff;
+        padding-bottom: 20px;
     }
     .isOpen a{
         border-top:1px solid #999;
@@ -70,45 +76,7 @@
         align-self:center;
         margin-top: 10%;
     }
-}
-
-@media screen and (max-width: 780px){
-    /* .navigation_Conteiner{
-        width: auto;
+    .auth{
+        margin: 1em auto;
     }
-    .menu{
-        display:block;
-    }
-    .routes{
-        display: none;
-    }
-    .isOpen{
-        display:flex;
-        flex-direction: column;
-        justify-content: stretch;
-        align-items: flex-start;
-        position: absolute;
-        top: 80px;
-        right: 0;
-        height: 300px;
-        width: 100%;
-        z-index:99;
-        background-color: #fff;
-    }
-    .isOpen a{
-        border-top:1px solid #999;
-        width: 100%;
-        padding:15px;
-    }
-    .isOpen a:nth-of-type(3){
-        border-bottom:1px solid #999;        
-    }
-    .isOpen .login a{
-        border: none;
-    }
-    .login{
-        width: 90%;
-        align-self:center;
-        margin-top: 10%;
-    } */
 }

@@ -8,6 +8,7 @@
     right: 0;
 }
 .Conteiner{
+    color: #fff;
     z-index: 1;
     width: 400px;
     padding: 25;
@@ -18,31 +19,34 @@
     position: fixed;
     top:80px;
     right: 0;
-    background-color: #800080;
+    background-color: #1f1f1ff7;
 }
 .none{
     display: none;
 }
+.Conteiner span{
+    margin: 10px 0;
+}
+.Conteiner span svg{
+    width: 30px;
+    height: 30px;
+}
 .profile{
-    /* flex: 1; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: 30%;
     width: 60%;
-    /* background-color: rgba(137, 43, 226, 0.234); */
 }
 .photo{
-    margin-top: 20px;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
-    /* background-color: #EEBC1D; */
     object-Fit: contain;
+    border-radius: 50%;
 }
 .watchList{
-    /* flex: 1; */
     min-height: 300px;
     width: 90%;
     background-color: rgb(188, 187, 187);
@@ -52,9 +56,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12;
     overflow-y: scroll;
-    margin: 1em 0;
+    margin-bottom: 1em;
 }
 .logOut{
     display: flex;
@@ -82,6 +85,5 @@
     font-size: 20px;
     color: #fff;
     font-weight: 600;
-    /* flex: 1; */
     background-color: rgba(239, 235, 235, 0.496);
 }

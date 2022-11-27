@@ -1,6 +1,7 @@
 import React from 'react'
 import { CryptoState } from '../../Contexts/LoggedContext'
 
+import { AiFillCloseCircle} from "react-icons/ai";
 import styles from "./SideBar.module.css"
 import Icon from "../../icons/icon-header.png"
 import { Link } from 'react-router-dom'
@@ -9,7 +10,7 @@ import { auth } from '../../FireBase'
 
 const SideBar = ({ a }) => {
 
-  const { user, setUser, watchList, setWatchList, alert, setAlert, logged } = CryptoState()
+  const { user, setUser, watchList, setWatchList, alert, setAlert, logged, setLogged } = CryptoState()
 
   const loggOut = () => {
     signOut(auth)
@@ -19,11 +20,16 @@ const SideBar = ({ a }) => {
       type: "success"
     })
   }
+
+  const show = () =>{
+    setLogged(!logged)
+  } 
   return (
     <>
       {user && (
         <div className={logged ? `${styles.center}` : `${styles.none}`}>
           <div className={logged ? `${styles.Conteiner}` : `${styles.none}`}>
+            <span onClick={show}> <AiFillCloseCircle/></span>
             <div className={styles.profile}>
               {user?.photoURL ? <img src={user?.photoURL} alt={user?.displayName || user?.email} className={styles.photo} /> :
                 <img src={Icon} alt={user?.displayName || user?.email} className={styles.photo} />
@@ -37,10 +43,7 @@ const SideBar = ({ a }) => {
 
             </div>
             <div className={styles.rodaPé}>
-              <div>
-                
-              </div>
-              <Link to="/WatchList">
+              <Link to="/WatchListPage">
                 Ver WatchList
               </Link>
             </div>
@@ -53,3 +56,4 @@ const SideBar = ({ a }) => {
 }
 
 export default SideBar
+

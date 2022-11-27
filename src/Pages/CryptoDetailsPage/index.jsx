@@ -24,6 +24,7 @@ const CryptoDetailsPage = () => {
   useEffect(()=>{
 
     console.log(timePeriod)
+    
   },[timePeriod])
 
 
@@ -59,7 +60,7 @@ const CryptoDetailsPage = () => {
       <div className={styles.period_buttons}>
         <div style={{color: color}}>
           {time.map((day) => (
-                <button style={{color:color}}
+                <button
                 key={day}
                 onClick={() => {setTimeperiod(day);
                 }}
