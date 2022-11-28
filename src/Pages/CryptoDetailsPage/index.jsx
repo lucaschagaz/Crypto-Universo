@@ -10,22 +10,54 @@ import Loading from "../../Components/Loader"
 import LineChart from "../../Components/LineChart"
 
 import { useGetCryptosDetailsQuery, useGetCryptosHistoryQuery} from "../../services/cryptoApi";
-
+import { CryptoState } from '../../Contexts/LoggedContext'
+import { db } from "../../FireBase";
 import styles from "./cryptoDetails.module.css"
+import { doc, setDoc } from 'firebase/firestore';
 
 const CryptoDetailsPage = () => {
   
   const{ coinId } = useParams()
+
   const [ timePeriod, setTimeperiod ] = useState('3h')
   const { data, isFetching, isLoading } = useGetCryptosDetailsQuery(coinId)
   const { data:coinHistory } = useGetCryptosHistoryQuery({ coinId, timePeriod})
   const cryptoDetails = data?.data?.coin;
+  const color = data?.data?.coin.color
 
-  useEffect(()=>{
+  const { user, setUser, wacthList, setWatchList, setAlert, logged, setLogged } = CryptoState()
 
-    console.log(timePeriod)
+
+  const inWatchList = wacthList.includes(data?.data?.coin.id)
+
+  const addToWatchlist = async () => {
+
+    const coinRef = doc(db, "watchlist", user.uid);
+
+    try {
+      await setDoc(
+        coinRef,
+        { coins: wacthList ? [...wacthList, cryptoDetails.id] : [cryptoDetails.id] },
+      );
+
+      setAlert({
+        open: true,
+        message: `${data?.data?.coin.name} Added to the Watchlist !`,
+        type: "success",
+      });
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
+  };
+
+
+  const removeFromWatchList = () =>{
     
-  },[timePeriod])
+  }
 
 
   if (isLoading || isFetching ) return <Loading/>;
@@ -47,7 +79,6 @@ const CryptoDetailsPage = () => {
     { title: 'Circulating Supply', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
   ];
 
-  const color = data?.data?.coin.color
 
   return (
     <Conteiner CustomClass="cryptoDetails_conteiner">
@@ -56,6 +87,11 @@ const CryptoDetailsPage = () => {
           {data?.data?.coin.name} ({data?.data?.coin.symbol}) Price
         </h1>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
+        { user  && (<div className={styles.button_WatchList}>
+          <button onClick={inWatchList ? removeFromWatchList : addToWatchlist}>
+            { inWatchList ? "Remover da WatchList" : "Adicionar na WatchList"}
+          </button>
+        </div>)}
       </div>
       <div className={styles.period_buttons}>
         <div style={{color: color}}>
