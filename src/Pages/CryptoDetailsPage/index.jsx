@@ -25,10 +25,10 @@ const CryptoDetailsPage = () => {
   const cryptoDetails = data?.data?.coin;
   const color = data?.data?.coin.color
 
-  const { user, setUser, wacthList, setWatchList, setAlert, logged, setLogged } = CryptoState()
+  const { user, wacthList, setAlert} = CryptoState()
 
 
-  const inWatchList = wacthList.includes(data?.data?.coin.id)
+  const inWatchList = wacthList.includes(data?.data?.coin.uuid)
 
   const addToWatchlist = async () => {
 
@@ -37,8 +37,9 @@ const CryptoDetailsPage = () => {
     try {
       await setDoc(
         coinRef,
-        { coins: wacthList ? [...wacthList, cryptoDetails.id] : [cryptoDetails.id] },
-      );
+        {coins: wacthList ? [...wacthList, cryptoDetails?.uuid] : [cryptoDetails?.uuid]},
+        {merge:true}
+          );
 
       setAlert({
         open: true,
@@ -55,8 +56,30 @@ const CryptoDetailsPage = () => {
   };
 
 
-  const removeFromWatchList = () =>{
-    
+  const removeFromWatchList = async () =>{
+
+    const coinRef = doc(db, "watchlist", user.uid);
+
+    try {
+
+      await setDoc(
+        coinRef, 
+        {coins: wacthList.filter((coin) => coin !== cryptoDetails.uuid)},
+        { merge: true }
+      )
+      setAlert({
+        open: true,
+        message: `${data?.data?.coin.name} romeved from the Watchlist !`,
+        type: "success",
+      });
+      
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
   }
 
 
@@ -88,7 +111,7 @@ const CryptoDetailsPage = () => {
         </h1>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
         { user  && (<div className={styles.button_WatchList}>
-          <button onClick={inWatchList ? removeFromWatchList : addToWatchlist}>
+          <button style={{backgroundColor: color,}} onClick={inWatchList ? removeFromWatchList : addToWatchlist}>
             { inWatchList ? "Remover da WatchList" : "Adicionar na WatchList"}
           </button>
         </div>)}

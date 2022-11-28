@@ -11,7 +11,7 @@ import { CryptoState } from "../../Contexts/LoggedContext";
 
 const Navigation = ({open, setOpen}) => {
 
-  const { user, logged } = CryptoState()
+  const { user } = CryptoState()
 
   return (
     <nav className={styles.navigation_Conteiner}>

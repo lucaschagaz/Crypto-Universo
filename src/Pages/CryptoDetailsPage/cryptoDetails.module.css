@@ -90,6 +90,13 @@
     color:#f1f1f1;
     cursor:pointer;
 }
+.button_WatchList{
+    margin: 1em 0;
+}
+.button_WatchList button{
+    color: #fff;
+    padding: 0.5em 1em;
+}
 @media screen and (max-width:780px) {
     .coin_heading_container h1{
         font-size: 25px;
