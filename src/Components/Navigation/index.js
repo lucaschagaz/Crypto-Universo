@@ -5,7 +5,7 @@ import { GrClose } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 import styles from "./Navigation.module.css";
-import AuthModal from "../Modal/AuthModal"
+import BasicModal from "../Modal/modal"
 import Avatar from "../avatarHeader";
 import { CryptoState } from "../../Contexts/LoggedContext";
 
@@ -20,7 +20,7 @@ const Navigation = ({open, setOpen}) => {
           <Link to="/Cryptocurrencies"onClick={()=>{setOpen(!open)}}>Cryptocurrencies</Link>
           <Link to="/News" onClick={()=>{setOpen(!open)}}>Crypto News</Link>
         <div className={styles.auth}>
-         { user ? <Avatar open={open} setOpen={setOpen} /> :  <AuthModal open={open} setOpen={setOpen}/>}
+         { user ? <Avatar open={open} setOpen={setOpen} /> :  <BasicModal open={open} setOpen={setOpen}/>}
         </div>
       </div>
       <div  className={styles.menu}>
