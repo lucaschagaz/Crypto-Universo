@@ -59,7 +59,7 @@ const HomePage = () => {
         </div>
         <div className={styles.header_sections}>
           <div  className={styles.header_sections_link}>
-            <h1>Noticias relevantes do mundo cripto</h1>
+            <h1>Noticias do mundo cripto</h1>
             <Button text="Ver Mais" link="/news" />
           </div>
           <NewsPage limit />

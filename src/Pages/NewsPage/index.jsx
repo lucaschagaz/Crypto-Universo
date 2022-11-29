@@ -46,12 +46,12 @@ const NewsPage = ({ limit }) => {
       {!limit && (
         <div className={styles.newsTitle_Conteiner}>
           <h1>Notícias</h1>
-          {/* <select>
+          {/* <div className={styles.select}>
             {cryptoList?.data?.coins?.map((coin)=>(
-              <option onClick={()=>{setSearchTerm(coin.name)}}>{coin.name}</option>
+              <button onClick={()=>{setSearchTerm(coin.name)}}>{coin.name}</button>
             ))
             }
-          </select> */}
+          </div> */}
         </div>
       )}
       <div className={styles.news_Conteiner}>
