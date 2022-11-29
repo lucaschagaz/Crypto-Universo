@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import HTMLReactParser from "html-react-parser"
 import millify from "millify" 
-import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined } from '@ant-design/icons';
-
+import { FaMoneyBill, FaDollarSign, FaRegCalendar,FaExclamationCircle, FaStopCircle, FaTrophy, FaCheckCircle, FaSortNumericDown} from "react-icons/fa"
 
 import Conteiner from "../../Components/Conteiner"
 import Loading from "../../Components/Loader"
@@ -88,18 +87,18 @@ const CryptoDetailsPage = () => {
   const time = ['3h', '24h', '7d', '30d', '3m','1y', '3y', '5y'];
   
   const stats = [
-    { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
-    { title: 'Rank', value: cryptoDetails?.rank, icon: <NumberOutlined /> },
-    { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
-    { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
+    { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <FaDollarSign /> },
+    { title: 'Rank', value: cryptoDetails?.rank, icon: <FaSortNumericDown /> },
+    { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <FaDollarSign /> },
+    { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <FaTrophy /> },
   ];
 
   const genericStats = [
-    { title: 'Number Of Markets', value: cryptoDetails?.numberOfMarkets, icon: <FundOutlined /> },
-    { title: 'Number Of Exchanges', value: cryptoDetails?.numberOfExchanges, icon: <MoneyCollectOutlined /> },
-    { title: 'Aprroved Supply', value: cryptoDetails?.supply?.confirmed ? <CheckOutlined /> : <StopOutlined />, icon: <ExclamationCircleOutlined /> },
-    { title: 'Total Supply', value: `$ ${cryptoDetails?.supply?.total == null ? "valor indisponivel" : cryptoDetails?.supply?.total && millify(cryptoDetails?.supply?.total)}`, icon: <ExclamationCircleOutlined /> },
-    { title: 'Circulating Supply', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
+    { title: 'Number Of Markets', value: cryptoDetails?.numberOfMarkets, icon: <FaRegCalendar /> },
+    { title: 'Number Of Exchanges', value: cryptoDetails?.numberOfExchanges, icon: <FaMoneyBill /> },
+    { title: 'Aprroved Supply', value: cryptoDetails?.supply?.confirmed ? <FaCheckCircle /> : <FaStopCircle />, icon: <FaExclamationCircle /> },
+    { title: 'Total Supply', value: `$ ${cryptoDetails?.supply?.total == null ? "valor indisponivel" : cryptoDetails?.supply?.total && millify(cryptoDetails?.supply?.total)}`, icon: <FaExclamationCircle /> },
+    { title: 'Circulating Supply', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <FaExclamationCircle /> },
   ];
 
 

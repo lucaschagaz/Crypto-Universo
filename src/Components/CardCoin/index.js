@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons"
+import { FaArrowCircleDown, FaArrowCircleUp } from "react-icons/fa"
 
 
 import styles from "./Card.module.css"
@@ -22,7 +22,7 @@ const CardCoin = ({name, price, rank, iconUrl, marketCap, change}) => {
         <p>Mudança:
           <span className={Number(c) > 0 ? `${styles.Maior}` : `${styles.Menor}`}>
             {change}%
-            {Number(c) > 0 ? <ArrowUpOutlined/> : <ArrowDownOutlined/>
+            {Number(c) > 0 ? <FaArrowCircleUp/> : <FaArrowCircleDown/>
 
             }
           </span>
