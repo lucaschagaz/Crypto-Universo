@@ -1,16 +1,13 @@
-# ⚠️ Projeto ainda em Desenvolvimento
 
 # 📷 Demonstração
 
-![](./src/icons/demo01.jpg)
-<br><br>
-![](./src/icons/demo02.jpg)
+<a href="https://crypto-universo.netlify.app/">Teste o App aqui</a>
 
 <br>
 
 # 💻 Crypto-Universe 
 
-Aplicação web desenvolvida em react e RTK query para consulta e acomapanhamento de noticias e as informações relacionadas as principais cripto moedas e exchanges do mercado, quando finalizado sera possivel adicionar os tokens de maior interrese em uma lista de interrese/favoritos para um acompanhamento individual.  
+Aplicação web desenvolvida em React para consulta e acomapanhamento de noticias e as informações relacionadas as principais cripto moedas e exchanges do mercado, adicione uma ou mais moedas em uma lista de favoritos para um acompanhamento individual, Gerenciamento de dados feito com Redux Toolkit Query e sistema de autenticação Google com Firebase. 
 
 
 <br>
