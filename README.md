@@ -20,6 +20,8 @@ Aplicação web desenvolvida em React para consulta e acomapanhamento de noticia
 
 ✔️React Hooks
 
+✔️Firebase
+
 ✔️Css modules
 
 ✔️Redux toolkit query
@@ -27,6 +29,10 @@ Aplicação web desenvolvida em React para consulta e acomapanhamento de noticia
 ✔️moment 
 
 ✔️Chart Js
+
+✔️Millify
+
+✔️Material ui
 
 <br>
 
