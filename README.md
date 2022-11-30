@@ -36,7 +36,7 @@ Aplicação web desenvolvida em React para consulta e acomapanhamento de noticia
 
 1- Para instalar as dependências
 
-Nas pasta raiz do projeto rode o comando:
+Na pasta raiz do projeto rode o comando:
     
     npm install
 
