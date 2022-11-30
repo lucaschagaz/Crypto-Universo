@@ -32,15 +32,17 @@ Aplicação web desenvolvida em React para consulta e acomapanhamento de noticia
 
 # ⚙ Configuração
 
-1- Para instalar as dependências:
+## se prefirir rodar o projeto na sua maquina:
 
-Nas pastas server e app individualmente rode o comando:
+1- Para instalar as dependências
+
+Nas pasta raiz do projeto rode o comando:
     
     npm install
 
-2- Para iniciar a aplicação React:
+2- Para iniciar a aplicação React
 
-No seu terminal navegue até a pasta app e rode :
+Na mesma pasta rode o comando:
 
     npm start
 
