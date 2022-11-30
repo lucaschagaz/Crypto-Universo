@@ -1,7 +1,7 @@
 
 # 📷 Demonstração
 
-<a href="https://crypto-universo.netlify.app/">Teste o App aqui</a>
+<Link href="https://crypto-universo.netlify.app/">Teste o App aqui</Link>
 
 <br>
 
