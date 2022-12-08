@@ -5,9 +5,8 @@ import { Provider } from "react-redux"
 
 import App from './App';
 import store from "./Store/store"
-import CryptoContext from "./Contexts/LoggedContext"
+import CryptoContext from './Contexts/LoggedContext'
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
 const rootNode = document.getElementById('root');
 
 ReactDOM.render(
@@ -18,9 +17,6 @@ ReactDOM.render(
 </CryptoContext>
 , rootNode);
 
-// root.render(
-//  
-// )
 
 
 

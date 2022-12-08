@@ -1,12 +1,32 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 import { auth, db} from "../FireBase"
 import { onSnapshot, doc } from "firebase/firestore";
-const Crypto = createContext();
 
-const CryptoContext = ({ children }) => {
+type AlertProps = {
+  open: boolean,
+  message:string,
+  type:string
+}
 
-  const [user, setUser] = useState(null);
+type CryptoContextData = {
+  logged:boolean,
+  setLogged:(logged: boolean) => void,
+  wacthList:string[]
+  alert:AlertProps
+  setAlert:(alert: AlertProps) => void,
+  user: User | null
+}
+
+type ContextProps = {
+  children: React.ReactNode
+}
+
+export const Crypto = createContext({} as CryptoContextData);
+
+const CryptoContext = ({ children }: ContextProps) => {
+
+  const [user, setUser] = useState(null as User | null);
   const [logged, setLogged] = useState(false);
   const [wacthList, setWatchlist] = useState([]);
   const [alert, setAlert] = useState({
@@ -20,7 +40,6 @@ const CryptoContext = ({ children }) => {
       const coinRef = doc(db, "watchlist", user?.uid);
       var unsubscribe = onSnapshot(coinRef, (coin) => {
         if (coin.exists()) {
-          // console.log(coin.data().coins, "Coin Exist");
           setWatchlist(coin.data().coins);
         } else {
           console.log("No Items in Watchlist");
@@ -37,23 +56,23 @@ const CryptoContext = ({ children }) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user)
-        console.log(user)
-      } else setUser(null);
+      } else {
+        setUser(null)
+      };
     });
 
   }, []);
 
   return (
-    <Crypto.Provider value={
-      {
+    <Crypto.Provider 
+      value={{
         logged, 
         setLogged, 
-        wacthList,
+        wacthList, 
         alert,
         setAlert,
-        user
-       }
-      }>
+        user }}
+    >
       {children}
     </Crypto.Provider>
   );
@@ -61,6 +80,4 @@ const CryptoContext = ({ children }) => {
 
 export default CryptoContext;
 
-export const CryptoState = () => {
-  return useContext(Crypto)
-}
+export const CryptoState = () => useContext(Crypto)
