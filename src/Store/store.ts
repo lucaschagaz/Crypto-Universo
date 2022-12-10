@@ -5,7 +5,7 @@ import { SearcNewsApi } from "../services/newsApi"
 import { ExchangeApi } from "../services/exchangeApi";
 
 
-export default configureStore({
+export const store = configureStore({
     reducer:{
         [cryptoApi.reducerPath]: cryptoApi.reducer,
         [SearcNewsApi.reducerPath]: SearcNewsApi.reducer,
@@ -13,3 +13,6 @@ export default configureStore({
     },
 
 })
+
+// export type RootState = ReturnType<typeof store.getState>
+// export type AppDispatch = typeof store.dispatch
