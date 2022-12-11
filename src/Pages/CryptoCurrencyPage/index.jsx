@@ -32,7 +32,6 @@ const CryptoCurrencyPage = ({ limit }) => {
   },[data, searchTerm])
 
 
-
   if (isLoading || isFetching ) return <Loading/>;
 
   const startIndex = currencyPage * itensPerPage

@@ -9,8 +9,9 @@ import { useGetExchangQuery } from '../../services/exchangeApi'
 import ExchangeCard from '../../Components/exchangeCard';
 
 import styles from "./exchange.module.css"
+import { IExchange } from '../../services/exchangeApi';
 
-const ExchangesPage = ({ limit }) => {
+const ExchangesPage = ({ limit }: any) => {
 
   const { data:exchageList , isFetching, isLoading} = useGetExchangQuery();
   const [itensPerPage, setItems ] = useState(9)
@@ -20,7 +21,7 @@ const ExchangesPage = ({ limit }) => {
 
   const startIndex = currencyPage * itensPerPage
   const endIndex = startIndex + itensPerPage
-  const currencyExchange = exchageList.slice(startIndex, endIndex)
+  const currencyExchange = exchageList?.slice(startIndex, endIndex)
 
   console.log(exchageList)
 
@@ -32,7 +33,7 @@ const ExchangesPage = ({ limit }) => {
           </div>  
         )}
       <div className={styles.exchange_Conteiner}>
-        {currencyExchange.map((exchange)=>(
+        {currencyExchange?.map((exchange)=>(
           <a href={exchange.url} key={exchange.id} target="_blank" rel="noreferrer">
               <ExchangeCard
               name={exchange.name}

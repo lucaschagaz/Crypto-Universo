@@ -10,12 +10,12 @@ const Alert = () => {
     useEffect(() => {
 
         if (!alert.message) {
-            setAlert({ open: false })
+            setAlert({ open: false, message:"", type:"" })
             return
         }
 
         const timer = setTimeout(() => {
-            setAlert({ open: false })
+            setAlert({open: false, message:"", type:""})
         }, 3000)
 
     }, [alert.open])

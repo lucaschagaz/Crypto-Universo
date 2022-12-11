@@ -2,11 +2,17 @@ import React from "react";
 
 import styles from "./Pagination.module.css";
 
-const Pagination = ({ PerPage, list, setCurrencyPage }) => {
+type PaginationProps = {
+  PerPage:number
+  list:number 
+  setCurrencyPage:(page: number) => void
+}
+
+const Pagination = ({ PerPage, list, setCurrencyPage }: PaginationProps) => {
 
   const pages = Math.ceil(list / PerPage)
 
-  function onPageChange(page) {
+  function onPageChange(page:number) {
     setCurrencyPage(page);
   }
   
