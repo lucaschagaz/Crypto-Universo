@@ -21,7 +21,7 @@ export const ExchangeApi = createApi({
     reducerPath: 'ExchangeApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://coingecko.p.rapidapi.com' }),
     endpoints: (builder) => ({
-        getExchang: builder.query<IExchange[], void>({
+        getExchange: builder.query<IExchange[], void>({
         query: () => {
             return{
                 url:"/exchanges",
@@ -32,6 +32,6 @@ export const ExchangeApi = createApi({
     })
 })
 
-export const { useGetExchangQuery } = ExchangeApi;
+export const { useGetExchangeQuery } = ExchangeApi;
 
 

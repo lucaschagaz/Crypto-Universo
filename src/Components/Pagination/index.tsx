@@ -4,11 +4,12 @@ import styles from "./Pagination.module.css";
 
 type PaginationProps = {
   PerPage:number
-  list:number 
-  setCurrencyPage:(page: number) => void
+  list:number
+  currency:number
+  setCurrencyPage:(currency: number) => void
 }
 
-const Pagination = ({ PerPage, list, setCurrencyPage }: PaginationProps) => {
+const Pagination = ({ PerPage, list, currency, setCurrencyPage }: PaginationProps) => {
 
   const pages = Math.ceil(list / PerPage)
 

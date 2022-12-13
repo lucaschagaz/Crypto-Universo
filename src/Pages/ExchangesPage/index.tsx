@@ -5,15 +5,14 @@ import Conteiner from '../../Components/Conteiner';
 import Loading from '../../Components/Loader';
 import Pagination from '../../Components/Pagination'
 
-import { useGetExchangQuery } from '../../services/exchangeApi'
+import { useGetExchangeQuery } from '../../services/exchangeApi'
 import ExchangeCard from '../../Components/exchangeCard';
 
 import styles from "./exchange.module.css"
-import { IExchange } from '../../services/exchangeApi';
 
 const ExchangesPage = ({ limit }: any) => {
 
-  const { data:exchageList , isFetching, isLoading} = useGetExchangQuery();
+  const { data:exchageList , isFetching, isLoading} = useGetExchangeQuery();
   const [itensPerPage, setItems ] = useState(9)
   const [currencyPage, setCurrencyPage ] = useState(0)
 
@@ -40,10 +39,7 @@ const ExchangesPage = ({ limit }: any) => {
               year={exchange.year_established}
               country={exchange.country}
               rank={exchange.trust_score_rank}
-              volume24h={millify(exchange.trade_volume_24h_btc, {
-                precision: 3,
-                decimalSeparator: ",",
-              })}
+              volume24h={millify(exchange.trade_volume_24h_btc)}
               
               iconUrl={exchange.image}
               volumetotal={millify(exchange.trade_volume_24h_btc_normalized)}
@@ -54,7 +50,7 @@ const ExchangesPage = ({ limit }: any) => {
       <Pagination 
         PerPage={itensPerPage}
         currency={currencyPage} 
-        list={exchageList?.length}
+        list={exchageList?.length!}
         setCurrencyPage={setCurrencyPage} 
       />
     </Conteiner>

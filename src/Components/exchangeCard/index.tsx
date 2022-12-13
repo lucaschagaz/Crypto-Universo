@@ -2,7 +2,17 @@ import React from 'react'
 
 import styles from "./exchangeCard.module.css"
 
-const ExchangeCard = ({name, year, volume24h,volumetotal, iconUrl, rank, country}) => {
+interface IExchangeCard {
+  name:string
+  year:number
+  volume24h: string
+  volumetotal: string
+  iconUrl:string
+  rank:number
+  country:string
+}
+
+const ExchangeCard = ({name, year, volume24h,volumetotal, iconUrl, rank, country}: IExchangeCard) => {
 
   return (
     <div className={styles.ExchengeCard}>

@@ -9,27 +9,27 @@ import Loading from "../../Components/Loader"
 import Pagination from "../../Components/Pagination"
 import Conteiner from '../../Components/Conteiner';
 
-import { useGetCryptosQuery } from "../../services/cryptoApi";
+import { useGetCryptosQuery, ICrypto } from "../../services/cryptoApi";
 
 import styles from "./CryptoCurrencyPage.module.css";
 
-const CryptoCurrencyPage = ({ limit }) => {
+const CryptoCurrencyPage = ({ limit }: any) => {
   const count = limit ? 3 : 100;
-  const { data, isFetching, isLoading } = useGetCryptosQuery(count);
-  const [cryptos, setCryptos] = useState([]);
+  const { data:CryptoList, isFetching, isLoading } = useGetCryptosQuery(count);
+  const [cryptos, setCryptos] = useState<ICrypto[]>();
   const [searchTerm, setSearchTerm] = useState('');
 
   const [itensPerPage, setItems ] = useState(9)
   const [currencyPage, setCurrencyPage ] = useState(0)
  
   useEffect(()=>{   
-    const filteredData = data?.data?.coins.filter((item) => item.name.toLowerCase().includes(searchTerm))
+    const filteredData = CryptoList?.filter((item) => item.name.toLowerCase().includes(searchTerm))
     
     if(!isFetching){
       setCryptos(filteredData)
     }
     
-  },[data, searchTerm])
+  },[CryptoList, searchTerm])
 
 
   if (isLoading || isFetching ) return <Loading/>;
@@ -74,7 +74,7 @@ const CryptoCurrencyPage = ({ limit }) => {
       <Pagination 
         PerPage={itensPerPage}
         currency={currencyPage} 
-        list={cryptos?.length}
+        list={cryptos?.length!}
         setCurrencyPage={setCurrencyPage} 
       /> 
     )}
