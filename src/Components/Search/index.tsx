@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 
 import styles from "./search.module.css"
+import { SearchProps } from "../../types/types"
 
-const Search = ({handleOnText, value}) => {
+const Search = ({handleOnText, value}:SearchProps) => {
 
-    const submit = (e) =>{
+    const submit = (e: React.SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
 
