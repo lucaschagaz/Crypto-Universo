@@ -10,36 +10,35 @@ import Conteiner from '../../Components/Conteiner';
 
 import { useGetNewsQuery } from "../../services/newsApi";
 import { useGetCryptosQuery } from "../../services/cryptoApi";
+import { INews } from "../../types/types";
 
 
 import styles from "./news.module.css";
 
-const NewsPage = ({ limit }) => {
+const NewsPage = ({ limit }: any) => {
 
   const [searchTerm, setSearchTerm] = useState("bitcoin");
   const count = limit ? 3 : 100;
   const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ count, searchTerm });
   const { data: cryptoList } = useGetCryptosQuery(count);
-  const [news, setNews] = useState([]);
+  // const [news, setNews] = useState([]);
 
   const [itensPerPage, setItems] = useState(9)
   const [currencyPage, setCurrencyPage] = useState(0)
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    if(!isFetching) {
-      setNews(cryptoNews?.value);
-    }
-
-
-  }, [cryptoNews, searchTerm]);
+  //   if(!isFetching) {
+  //     setNews(cryptoNews?.);
+  //   }
+  // }, [cryptoNews, searchTerm]);
 
   if (isLoading || isFetching) return <Loading />;
 
 
   const startIndex = currencyPage * itensPerPage
   const endIndex = startIndex + itensPerPage
-  const currencyList = news?.slice(startIndex, endIndex)
+  const currencyList = cryptoNews?.slice(startIndex, endIndex)
 
   return (
     <Conteiner CustomClass="Section_Conteiner">
@@ -55,21 +54,21 @@ const NewsPage = ({ limit }) => {
         </div>
       )}
       <div className={styles.news_Conteiner}>
-        {currencyList?.map((news, i) => (
-          <a href={news.url} key={i} target="_blank" rel="noreferrer">
+        {currencyList?.map((Single:INews, i:number) => (
+          <a href={Single.url} key={i} target="_blank" rel="noreferrer">
             <NoticesCard
-              name={news.name.length > 50
-                ? `${news.name.substring(0, 50)}...`
-                : news.name}
-              image={news?.image?.thumbnail?.contentUrl}
+              name={Single.name.length > 50
+                ? `${Single.name.substring(0, 50)}...`
+                : Single.name}
+              image={Single?.image}
               description={
-                news.description.length > 80
-                  ? `${news.description.substring(0, 80)}...`
-                  : news.description
+                Single.description.length > 80
+                  ? `${Single.description.substring(0, 80)}...`
+                  : Single.description
               }
-              textProvider={news.provider[0]?.name}
-              imageProvider={news.provider[0]?.image?.thumbnail?.contentUrl}
-              date={moment(news.datePublished).startOf("ss").fromNow()}
+              provider={Single.provider}
+              // imageProvider={Single.provider[0]?.image}
+              datePublished={Single.datePublished}
             ></NoticesCard>
           </a>
         ))}
@@ -78,7 +77,7 @@ const NewsPage = ({ limit }) => {
         <Pagination
           PerPage={itensPerPage}
           currency={currencyPage}
-          list={news?.length}
+          list={cryptoNews?.length!}
           setCurrencyPage={setCurrencyPage}
         />
       )}

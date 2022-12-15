@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery  } from  "@reduxjs/toolkit/query/react"
+import {NewsParamsQuery,INews} from '../types/types'
 
 const baseUrl = 'https://bing-news-search1.p.rapidapi.com/news';
 
@@ -11,7 +12,7 @@ export const SearcNewsApi = createApi({
     reducerPath:"SearcNewsApi",
     baseQuery: fetchBaseQuery({baseUrl}),
     endpoints:(builder)=>({
-        getNews:builder.query({
+        getNews:builder.query<INews[],NewsParamsQuery>({
             query:({ count, searchTerm})=>{
                 return{
                     url:'/search',
