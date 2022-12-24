@@ -77,7 +77,7 @@ export interface ICoin {
   color: string;
   description: any;
   iconUrl: string;
-  // links: LinksCoin[];
+  links: LinksCoin[];
   listedAt: number;
   lowVolume: false;
   marketCap: string;
@@ -95,7 +95,13 @@ export interface ICoin {
   websiteUrl: string;
 }
 
-export interface ICryptoDetailQuery {
+interface LinksCoin {
+  name:string
+  type:string 
+  url:string
+}
+
+export interface ICryptoDetailQuery{
   data: {
     coin: ICoin;
     stats?: IStats;

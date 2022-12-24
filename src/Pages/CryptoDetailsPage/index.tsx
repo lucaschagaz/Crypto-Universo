@@ -16,8 +16,8 @@ import { doc, setDoc } from 'firebase/firestore';
 
 const CryptoDetailsPage = () => {
   
-  const{ coinId } = useParams()
-
+  const { coinId } = useParams()
+ 
   const [ timePeriod, setTimeperiod ] = useState('3h')
   const { data, isFetching, isLoading } = useGetCryptosDetailsQuery(coinId)
   const { data:coinHistory } = useGetCryptosHistoryQuery({ coinId, timePeriod})
