@@ -24,7 +24,7 @@ const CryptoCurrencyPage = ({ limit }: TypeLimit) => {
   const [currencyPage, setCurrencyPage ] = useState(0)
  
   useEffect(()=>{   
-    const filteredData = CryptoList?.filter((item) => item.name.toLowerCase().includes(searchTerm))
+    const filteredData = CryptoList?.data?.coins?.filter((item :ICrypto ) => item.name.toLowerCase().includes(searchTerm))
     
     if(!isFetching){
       setCryptos(filteredData)
@@ -51,7 +51,7 @@ const CryptoCurrencyPage = ({ limit }: TypeLimit) => {
           
         )}
       <div className={styles.coins_conteiner}>
-        {currencyList?.map((currency) => (
+        {currencyList?.map((currency: ICrypto) => (
           <Link key={currency.uuid} to={`/CryptoDetails/${currency.uuid}`}>
             <CardCoin
               name={currency.name}
@@ -64,14 +64,14 @@ const CryptoCurrencyPage = ({ limit }: TypeLimit) => {
           </Link>
         ))}
       </div>
-    {/* {!limit && cryptos.length > 9 &&(
+    {!limit && cryptos?.length! > 9 &&(
       <Pagination 
         PerPage={itensPerPage}
         currency={currencyPage} 
         list={cryptos?.length!}
         setCurrencyPage={setCurrencyPage} 
       /> 
-    )} */}
+    )}
     </Conteiner>
   );
 };

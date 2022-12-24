@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { ICrypto ,CryptosHistoryParamsQuery } from "../types/types"
+import { ICryptosQuery ,CryptosHistoryParamsQuery, ICryptoDetailQuery } from "../types/types"
 
 const cryptoApiHeaders = {
     'x-rapidapi-host':'coinranking1.p.rapidapi.com' ,
@@ -13,7 +13,7 @@ export const cryptoApi = createApi({
     reducerPath: 'cryptoApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://coinranking1.p.rapidapi.com' }),
     endpoints: (builder) => ({
-        getCryptos: builder.query<ICrypto[], number>({
+        getCryptos: builder.query<ICryptosQuery, number>({
         query: (count) => {
             return{
                 url:"/coins",
@@ -24,7 +24,7 @@ export const cryptoApi = createApi({
             }
         }
         }), 
-        getCryptosDetails: builder.query<ICrypto, string>({
+        getCryptosDetails: builder.query<ICryptoDetailQuery, string>({
             query: (coinId) => {
                 return{
                     url:`/coin/${coinId}`,
@@ -32,18 +32,18 @@ export const cryptoApi = createApi({
                 }
             }
         }),
-        getCryptosHistory: builder.query<ICrypto, CryptosHistoryParamsQuery>({
-            query: ({ coinId, timePeriod}) => {
-                return{
-                    url:`/coin/${coinId}/history`,
-                    headers: cryptoApiHeadersHisoty,
-                    params: {referenceCurrencyUuid: 'yhjMzLPhuIDl', timePeriod: timePeriod}             
-                }
-            }
-        })
+        // getCryptosHistory: builder.query<ICrypto, CryptosHistoryParamsQuery>({
+        //     query: ({ coinId, timePeriod}) => {
+        //         return{
+        //             url:`/coin/${coinId}/history`,
+        //             headers: cryptoApiHeadersHisoty,
+        //             params: {referenceCurrencyUuid: 'yhjMzLPhuIDl', timePeriod: timePeriod}             
+        //         }
+        //     }
+        // })
     })
 })
 
-export const { useGetCryptosQuery, useGetCryptosDetailsQuery, useGetCryptosHistoryQuery } = cryptoApi;
-
+// export const { useGetCryptosQuery, useGetCryptosDetailsQuery, useGetCryptosHistoryQuery } = cryptoApi;
+export const { useGetCryptosQuery, useGetCryptosDetailsQuery} = cryptoApi;
 

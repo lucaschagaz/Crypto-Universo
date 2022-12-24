@@ -12,19 +12,33 @@ export interface IAllNews {
   _type: string;
 }
 
-export interface ICrypto {
-  data:{
-    coin:{
-    uuid?:number
-    name:string
-    price:number
-    rank:number
-    iconUrl:string
-    marketCap:number
-    change:number
-  }
-  }
+export interface ICryptosQuery {
+  data: {
+    coins: ICrypto[];
+    stats: IStats;
+  };
+  status?: "success";
 }
+
+export interface IStats {
+  total: string;
+  total24hVolume: string;
+  totalCoins: string;
+  totalExchanges: string;
+  totalMarketCap: string;
+  totalMarkets: string;
+}
+
+export interface ICrypto {
+      uuid?:number
+      name:string
+      price:number
+      rank:number
+      iconUrl:string
+      marketCap:number
+      change:number
+}
+
 export interface INews {
     category?: string;
     datePublished: string;
@@ -52,8 +66,43 @@ export interface INews {
     }[];
     url?: string;
     _type?: string;
-  }
-            
+}
+
+export interface ICoin {
+  ["24hVolume"]: string;
+  allTimeHigh: { price: string; timestamp: number };
+  btcPrice: number;
+  change: string;
+  coinrankingUrl: string;
+  color: string;
+  description: any;
+  iconUrl: string;
+  // links: LinksCoin[];
+  listedAt: number;
+  lowVolume: false;
+  marketCap: string;
+  name: string;
+  numberOfExchanges: number;
+  numberOfMarkets: number;
+  price: string;
+  priceAt: number;
+  rank: 1;
+  sparkline: number[];
+  supply: { confirmed: true; total: "19066281"; circulating: string };
+  symbol: string;
+  tier: 1;
+  uuid: string;
+  websiteUrl: string;
+}
+
+export interface ICryptoDetailQuery {
+  data: {
+    coin: ICoin;
+    stats?: IStats;
+  };
+  status?: "success";
+}
+
 export type CryptosHistoryParamsQuery = { timePeriod: string; coinIDToString: string};
 
 export type NewsParamsQuery = { count: number; searchTerm: string};
