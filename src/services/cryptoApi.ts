@@ -24,7 +24,7 @@ export const cryptoApi = createApi({
             }
         }
         }), 
-        getCryptosDetails: builder.query<ICrypto, number>({
+        getCryptosDetails: builder.query<ICrypto, string>({
             query: (coinId) => {
                 return{
                     url:`/coin/${coinId}`,

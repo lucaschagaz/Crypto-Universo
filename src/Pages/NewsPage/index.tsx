@@ -12,33 +12,28 @@ import { useGetNewsQuery } from "../../services/newsApi";
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 import { INews } from "../../types/types";
 
+import { TypeLimit } from "../../types/types"
+
 
 import styles from "./news.module.css";
 
-const NewsPage = ({ limit }: any) => {
+const NewsPage = ({ limit }: TypeLimit) => {
 
   const [searchTerm, setSearchTerm] = useState("bitcoin");
   const count = limit ? 3 : 100;
   const { data: cryptoNews, isFetching, isLoading } = useGetNewsQuery({ count, searchTerm });
-  const { data: cryptoList } = useGetCryptosQuery(count);
+  // const { data: cryptoList } = useGetCryptosQuery(count);
   // const [news, setNews] = useState([]);
 
   const [itensPerPage, setItems] = useState(9)
   const [currencyPage, setCurrencyPage] = useState(0)
-
-  // useEffect(() => {
-
-  //   if(!isFetching) {
-  //     setNews(cryptoNews?.);
-  //   }
-  // }, [cryptoNews, searchTerm]);
 
   if (isLoading || isFetching) return <Loading />;
 
 
   const startIndex = currencyPage * itensPerPage
   const endIndex = startIndex + itensPerPage
-  const currencyList = cryptoNews?.slice(startIndex, endIndex)
+  const currencyList = cryptoNews?.value?.slice(startIndex, endIndex)
 
   return (
     <Conteiner CustomClass="Section_Conteiner">
@@ -77,7 +72,7 @@ const NewsPage = ({ limit }: any) => {
         <Pagination
           PerPage={itensPerPage}
           currency={currencyPage}
-          list={cryptoNews?.length!}
+          list={cryptoNews?.value?.length!}
           setCurrencyPage={setCurrencyPage}
         />
       )}

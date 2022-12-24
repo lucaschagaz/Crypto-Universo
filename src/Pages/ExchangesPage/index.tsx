@@ -9,8 +9,9 @@ import { useGetExchangeQuery } from '../../services/exchangeApi'
 import ExchangeCard from '../../Components/exchangeCard';
 
 import styles from "./exchange.module.css"
+import { TypeLimit } from '../../types/types';
 
-const ExchangesPage = ({ limit }: any) => {
+const ExchangesPage = ({ limit }: TypeLimit) => {
 
   const { data:exchageList , isFetching, isLoading} = useGetExchangeQuery();
   const [itensPerPage, setItems ] = useState(9)

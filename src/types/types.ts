@@ -1,6 +1,20 @@
 import { ChangeEventHandler } from "react"
 
+
+export type TypeLimit = { limit: boolean;};
+
+export interface IAllNews {
+  queryContext: object;
+  readLink: string;
+  sort: object;
+  totalEstimatedMatches: number;
+  value: INews[];
+  _type: string;
+}
+
 export interface ICrypto {
+  data:{
+    coin:{
     uuid?:number
     name:string
     price:number
@@ -8,6 +22,8 @@ export interface ICrypto {
     iconUrl:string
     marketCap:number
     change:number
+  }
+  }
 }
 export interface INews {
     category?: string;
@@ -38,10 +54,11 @@ export interface INews {
     _type?: string;
   }
             
-export type CryptosHistoryParamsQuery = { timePeriod: number; coinId: number};
+export type CryptosHistoryParamsQuery = { timePeriod: string; coinIDToString: string};
+
 export type NewsParamsQuery = { count: number; searchTerm: string};
 
 export type SearchProps= {
-    handleOnText:ChangeEventHandler<HTMLInputElement>
-    value:string
+  handleOnText:ChangeEventHandler<HTMLInputElement>
+  value:string
 }

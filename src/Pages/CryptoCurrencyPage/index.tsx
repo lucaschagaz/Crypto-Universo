@@ -9,12 +9,12 @@ import Loading from "../../Components/Loader"
 import Pagination from "../../Components/Pagination"
 import Conteiner from '../../Components/Conteiner';
 
-import { ICrypto } from "../../types/types"
+import { ICrypto, TypeLimit } from "../../types/types"
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 
 import styles from "./CryptoCurrencyPage.module.css";
 
-const CryptoCurrencyPage = ({ limit }: any) => {
+const CryptoCurrencyPage = ({ limit }: TypeLimit) => {
   const count = limit ? 3 : 100;
   const { data:CryptoList, isFetching, isLoading } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState<ICrypto[]>();
